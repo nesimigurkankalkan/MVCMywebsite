@@ -1,0 +1,82 @@
+﻿@using MVCMyWebSite.Models;
+@model List<hizmetler>
+@{
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+<link rel="shortcut icon" href="#">
+
+<style>
+    #example_filter {
+        margin-bottom: 10px;
+    }
+
+    table.dataTable.no-footer {
+        border-bottom: 1px solid rgba(34,36,38,.15);
+    }
+
+    .ui.pagination.menu .active.item {
+        background-color: #ffffff;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        color: white !important;
+        border: 1px solid #111;
+        background-color: #9d9d9d !important;
+    }
+
+    .ui.menu .item.disabled, .ui.menu .item.disabled:hover {
+        color: rgb(0, 0, 0) !important;
+    }
+
+    div.dt-buttons {
+        margin-left: 10px;
+    }
+
+    .ui.input {
+        color: rgba(255, 255, 255, 0.87);
+    }
+
+    .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+        color: #ffffff;
+    }
+</style>
+
+<div class="card mb-3">
+    <div class="card-header" style="margin-bottom:60px;">
+        <center>
+            @*<i class="fas fa-table"></i>*@
+            <h2 style="color:#8fabff;">Hizmetler Listesi</h2>
+            @Html.ActionLink("Hizmet Ekle", "HizmetlerProcess", null, new { @class = "btn btn-primary", @style = "float:left;" })
+        </center>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example" class="ui celled table" cellspacing="0">
+
+                <thead>
+                    <tr>
+                        <th>Baslik</th>
+                        <th>Yazi</th>
+                        <th>Güncelle</th>
+                        <th>Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.baslik</td>
+                            <td>@Html.Raw(item.uzunyazi)</td>
+                            <td><a class="btn btn-primary" href="/Hizmetler/HizmetlerProcess/@item.id">Güncelle</a></td>
+                            <td><a class="btn btn-danger" href="/Hizmetler/DeleteFromTab/@item.id">Sil</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @*</div>*@
+        </div>
+    </div>
+</div>
+
+
+

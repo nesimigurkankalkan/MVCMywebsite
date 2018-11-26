@@ -1,0 +1,222 @@
+﻿@model MVCMyWebSite.Models.KULLANICILAR
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html style="width:100%; height:100%;">
+<head>
+    <link href="~/Content/css/Login.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap.css">
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="shortcut icon" href="#" />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+        
+
+</head>
+
+<body style="font-family: 'gill', sans-serif; height:100%; width:100%; overflow:hidden">
+    <style>
+        #particles-js {
+            /*background: cornflowerblue;*/
+            background: linear-gradient(to top right, #482d8f 0%, #90ccff 63%, #482d8f 100%);
+        }
+        #ustform {
+            display: table;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            /*background: linear-gradient(to top right, #482d8f 0%, #90ccff 63%, #482d8f 100%);*/
+            /*background: cornflowerblue;*/
+        }
+
+        #altform {
+            position: relative;
+            width: 500px;
+            height: 500px;
+        }
+
+            #altform #controlhover:hover {
+                color: #00C7FF !important;
+            }
+
+
+        .carda {
+            padding: 20px;
+            width: 300px;
+            height: 300px;
+            margin: 40px auto;
+            position: relative;
+            font-family: Arial;
+            color: #ff6f61;
+            text-align: center;
+        }
+        /* For Second Border Animation*/
+        /*.svg {
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              top: 0;
+              left: 0;
+              transition: opacity 200ms linear;
+            }
+
+            path {
+              stroke-dasharray: 8px, 12px;
+              stroke-width: 4px;
+              stroke: #f4ed18;
+            }*/
+
+        .box:hover .logoo {
+            -moz-transform: scale(1.5);
+            -ms-transform: scale(1.5);
+            -o-transform: scale(1.5);
+            -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+        }
+
+        .logoo {
+            -moz-transition: all 3.5s;
+            -o-transition: all 3.5s;
+            -webkit-transition: all 3.5s;
+            transition: all 3.5s;
+        }
+        /*
+            .box:hover #welcome {
+                font-size:2.5rem;
+            }
+            #welcome{
+                -webkit-transition: font-size 3.5s;
+                -moz-transition: font-size 3.5s;
+                -o-transition: font-size 3.5s;
+                transition: font-size 3.5s;
+                font-size:2.1rem;
+            }*/
+
+
+        .box {
+            width: 500px;
+            height: 500px;
+            color: white;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .box:hover::after, .box:hover::before {
+                transform: scale(1, 1);
+            }
+
+            .box::after, .box::before {
+                content: '';
+                position: absolute;
+                top: -20px;
+                right: 30px;
+                bottom: 22px;
+                left: 30px;
+                transition: all 0.5s;
+            }
+
+            /*.box::after {
+                border-right: 1px solid yellow;
+                border-left: 1px solid yellow;
+                transform: scale(1, 0);
+            }
+
+            .box::before {
+                border-top: 1px solid yellow;
+                border-bottom: 1px solid yellow;
+                transform: scale(0, 1);
+            }*/
+    </style>
+    <div id="particles-js"></div>
+
+    @*<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Şifre Kurtarma</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" id="mail" placeholder="Mail Adresiniz" />
+                    </div>
+                    <br />
+                    <div class="alert alert-success" id="successMail" role="alert">
+                        Mail hesabı üzerinden şifrenizi değiştirebilirsiniz
+                    </div>
+                    <div class="alert alert-danger" id="dangerMail" role="alert">
+                        Mail adresiniz hatalı
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Çıkış</button>
+                    <button type="button" class="btn btn-primary" id="sendMail" onclick="mailCheck()">Şifremi Yenile</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+    <div id="ustform">
+        <center style="display:table-cell; vertical-align:middle;">
+            <div id="altform" class="carda">
+                <div class="box">
+                    <br /><br />
+                    <div class="logo_img" style="margin-bottom:0rem;"><img style="width:72px; height:61px;" class="logoo" src="~/Content/images/nk.png" alt=""></div>
+                    <h1 id="welcome" style="color: #ffffff; margin-top:40px; margin-bottom:1rem;">Admin Paneli</h1>
+
+                    <form action="/KULLANICILAR/GIRIS" method="POST" class="form">
+                        @*<input type="text" placeholder="Email veya TC No" name="kullaniciadi">*@
+                        @Html.TextBoxFor(m => m.KULLANICIADI, new { @type = "text", @placeholder = "Kullanıcı Adınız" })
+                        @Html.TextBoxFor(m => m.SIFRE, new { @type = "password", @placeholder = "Şifre" })
+                        @*<input type="password" placeholder="Şifre" name="sifre">*@
+                        <button style="margin-bottom:1%;" type="submit" id="login-button">Giriş</button>
+                        <br>
+                        <a href="../Home/Home"> <button type="button" style="width: 150px;">Geri</button></a>
+                        <br>
+                        @*<a id="controlhover" href="#" role="button" data-toggle="modal" data-target="#exampleModalCenter" style="color: #ffffff; text-decoration: none ; display: inline-block;">Şifremi Unuttum</a>*@
+                    </form>
+                    @ViewBag.Message
+                    @*For Second Border Animation*@
+                    @*<svg class="svg" height="100%" width="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path d="M0 0 H 100 V 100 H 00 Z" fill="transparent" stroke="black" vector-effect="non-scaling-stroke" />*@
+                    @*</svg>*@
+                </div>
+            </div>
+        </center>
+    </div>
+</body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+@*<script src="~/scripts/Login.js"></script>*@
+@*<script src="~/scripts/jquery-3.2.1.min.js"></script>*@
+<script src="~/Scripts/popper.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#successMail").hide();
+        $("#dangerMail").hide();
+    });
+</script>
+<script>
+    anime({
+        targets: '.svg path',
+        strokeDashoffset: [anime.setDashoffset, 2],
+        easing: 'linear',
+        duration: 8000,
+        loop: true
+    });
+</script>
+<script>
+        particlesJS.load('particles-js', '/Content/particlesjs-config.json', function () {
+            console.log('callback - particles.js config loaded');
+        });
+</script>

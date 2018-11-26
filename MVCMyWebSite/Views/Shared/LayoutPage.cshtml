@@ -1,0 +1,198 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Gürkan N. Kalkan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <!-- Facebook and Twitter integration -->
+    <meta property="og:title" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:description" content="" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:image" content="" />
+    <meta name="twitter:url" content="" />
+    <meta name="twitter:card" content="" />
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="~/Content/images/NK.png">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="~/Content/css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="~/Content/css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css">
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="~/Content/css/flexslider.css">
+    <!-- Flaticons  -->
+    <!--<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">-->
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/css/owl.theme.default.min.css">
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <link href="~/Content/css/jquery-confirm.css" rel="stylesheet" />
+    <!-- Modernizr JS -->
+    <script src="~/Scripts/modernizr-2.6.2.min.js"></script>
+    <!-- ReCaptcha -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <style>
+        body
+            {
+              background:
+                linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+                linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+                linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+                linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+                linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+                linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+              background-color: #131313;
+              background-size: 20px 20px;
+            }
+        table, td, th {
+             border: 1px solid black;
+            }
+        td{
+            width:70px;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <div id="colorlib-page" style="background-color:#ffffff;">
+        <div class="container-wrap">
+         
+            <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+            <aside id="colorlib-aside" role="complementary" class="border js-fullheight">
+                <div class="text-center">
+                    <div class="author-img" style="background-image: url(../../Content/images/unnamed.jpg);"></div>
+                    <h1 style="text-align:center" class="abcd" id="colorlib-logo"><a href="index.html">@Session["Myname"]</a></h1>
+                    <span class="position"><a href="#">İstanbul'da</a> YAZILIM GELİŞTİRİCİSİ</span>
+                </div>
+                <nav id="colorlib-main-menu" role="navigation" class="navbar">
+                    <div id="navbar" class="collapse">
+                        <ul>
+                            <li class="active"><a href="#" data-nav-section="home">ANASAYFA</a></li>
+                            <li><a href="#" data-nav-section="about">BEN KIMIM ?</a></li>
+                            <li><a href="#" data-nav-section="services">HIZMETLER</a></li>
+                            <li><a href="#" data-nav-section="skills">YETENEKLER</a></li>
+                            <li><a href="#" data-nav-section="education">EĞİTİM</a></li>
+                            <li><a href="#" data-nav-section="experience">TECRÜBE</a></li>
+                            @*<li><a href="#" data-nav-section="work">Work</a></li>*@
+                            <li><a href="#" data-nav-section="blog">HABERLER</a></li>
+                            <li><a href="#" data-nav-section="contact">İLETİŞİM</a></li>
+                            @*<li><a href="#">USD Alış: @ViewBag.usdalis USD Satış: @ViewBag.usdsatis</a></li>
+                            <li><a href="#">EURO Alış: @ViewBag.euroalis EURO Satış: @ViewBag.eurosatis</a></li>*@
+                            
+                            @*<li id="remover">
+                                <hr style="margin-top:0px; border-top:2px solid rgba(0, 0, 0, 0.075);" />
+                                <center>
+                                    <table cellpadding="0" cellspacing="0" id="kurlar" style="box-shadow:0px 0px 12px 7px rgba(0, 0, 0, 0.3);">
+                                        <tr>
+                                            <td></td>
+                                            <td><b>Alış</b></td>
+                                            <td><b>Satış</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Dolar</b></td>
+                                            <td><span id="d_alis"></span></td>
+                                            <td><span id="d_satis"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Euro</b></td>
+                                            <td><span id="e_alis"></span></td>
+                                            <td><span id="e_satis"></span></td>
+                                        </tr>
+                                    </table>
+                                </center>
+                            </li>*@
+                        </ul>
+                    </div>
+                </nav>
+                <div class="colorlib-footer">
+                    @*<p>
+                        <small>
+                            &copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </span> <span>Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash.com</a></span>
+                        </small>
+                    </p>*@
+                    @*<ul>
+                        <li><a href="#"><i class="icon-facebook2"></i></a></li>
+                        <li><a href="#"><i class="icon-twitter2"></i></a></li>
+                        <li><a href="#"><i class="icon-instagram"></i></a></li>
+                        <li><a href="#"><i class="icon-linkedin2"></i></a></li>
+                    </ul>*@
+                </div>
+            </aside>
+            @RenderBody()
+        </div><!-- end:container-wrap -->
+    </div><!-- end:colorlib-page -->
+    <!-- jQuery -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    @*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>*@
+    <!-- jQuery Easing -->
+    <script src="~/Content/js/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="~/Content/js/jquery.waypoints.min.js"></script>
+    <!-- Flexslider -->
+    <script src="~/Content/js/jquery.flexslider-min.js"></script>
+    <!-- Owl carousel -->
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <!-- Counters -->
+    <script src="~/Content/js/jquery.countTo.js"></script>
+    <!-- It is important something because If there is an error as "uncaught typeerror: $... sticky_in_parent" Use the links script with Jquery Library   -->
+    <script src="https://cdn.rawgit.com/leafo/sticky-kit/v1.1.2/jquery.sticky-kit.js"></script>
+    <!-- MAIN JS -->
+    <script src="~/Content/js/main.js"></script>
+
+    <!--MAIN JS-->
+    <script src="~/Scripts/jquery.lettering.js"></script>
+    <script src="~/Scripts/jquery.textillate.js"></script>
+    <script src="~/Scripts/jquery-confirm.js"></script>
+    <script>
+  //$(function(){
+  //    kurkap();
+  //})
+        var timeOutId = 0;
+        var ajaxFn = function () {
+            $.ajax({
+                type: 'POST',
+                url: '/Home/kurgetir/',
+                //data: JSON.stringify(),
+                dataType: "JSON",
+                contentType: "application/json;charset=utf-8",
+                success: function (result) {
+                    if (result.succeed) {
+                        //console.log("İşlem basarılı");
+                        //console.log(result.usal);
+                        $("#d_alis").html(result.usal);
+                        $("#d_satis").html(result.ussat);
+                        $("#e_alis").html(result.eual);
+                        $("#e_satis").html(result.eusat);
+                    }
+                    else {
+                        $("#remover").remove();
+                    }
+                },
+                error: function () {
+                    $("#remover").remove();
+                }
+            });
+        }
+        ajaxFn();
+        //OR use BELOW line to wait 10 secs before first call
+        timeOutId = setInterval(ajaxFn, 10000);
+    </script>
+</body>
+</html>

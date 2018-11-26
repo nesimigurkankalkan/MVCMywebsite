@@ -1,0 +1,132 @@
+﻿@{
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+<link href="https://fonts.googleapis.com/css?family=Calligraffitti|Coming+Soon" rel="stylesheet">
+<style>
+    .fly-in-text {
+        width:100%;
+        list-style: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+        .fly-in-text li {
+            font-family: 'Calligraffitti', cursive;
+            display: inline-block;
+            margin-right: 30px;
+            font-weight: 300;
+            font-size: 4em;
+            color: #fff;
+            opacity: 1;
+            transition: all 2.5s ease;
+            /*font-family: 'Eater', cursive;*/
+        }
+
+            .fly-in-text li:last-child {
+                margin-right: 0;
+            }
+
+            .fly-in-text li.hiddeen:nth-child(1) {
+                transform: translateX(-200px) translateY(-200px);
+            }
+
+            .fly-in-text li.hiddeen:nth-child(2) {
+                transform: translateX(20px) translateY(100px);
+            }
+
+            .fly-in-text li.hiddeen:nth-child(3) {
+                transform: translateX(-150px) translateY(-80px);
+            }
+
+            .fly-in-text li.hiddeen:nth-child(4) {
+                transform: translateX(10px) translateY(-200px);
+            }
+
+            .fly-in-text li.hiddeen:nth-child(5) {
+                transform: translateX(-300px) translateY(200px);
+            }
+
+            .fly-in-text li.hiddeen:nth-child(6) {
+                transform: translateX(20px) translateY(-20px);
+            }
+
+            .fly-in-text li.hiddeen:nth-child(7) {
+                transform: translateX(30px) translateY(200px);
+            }
+
+            .fly-in-text li.hiddeen:nth-child(8) {
+                transform: translateX(30px) translateY(-80px);
+            }
+
+            .fly-in-text li.hiddeen:nth-child(9) {
+                transform: translateX(30px) translateY(-200px);
+            }
+
+            .fly-in-text li.hiddeen:nth-child(10) {
+                transform: translateX(30px) translateY(200px);
+            }
+
+            .fly-in-text li.hiddeen:nth-child(11) {
+                transform: translateX(30px) translateY(-20px);
+            }
+
+            @@media(max-width: 1510px) {
+                .fly-in-text li {
+                    font-size: 3em;
+                }
+            }
+
+            @@media(max-width: 1300px) {
+                .fly-in-text li {
+                    font-size: 2em;
+                }
+            }
+            @@media(max-width: 1100px) {
+                .fly-in-text li {
+                    font-size: 1em;
+                }
+            }
+            @@media(max-width: 870px) {
+                .fly-in-text li {
+                    font-size: 0.6em;
+                }
+            }
+            @@media(max-width: 790px) {
+                .fly-in-text li {
+                    font-size: 0.4em;
+                }
+            }
+
+        }
+</style>
+
+<div>
+    <ul class="fly-in-text">
+        <li class="hiddeen">H</li>
+        <li class="hiddeen">O</li>
+        <li class="hiddeen">Ş</li>
+        <li class="hiddeen">G</li>
+        <li class="hiddeen">E</li>
+        <li class="hiddeen">L</li>
+        <li class="hiddeen">D</li>
+        <li class="hiddeen">İ</li>
+        <li class="hiddeen">N</li>
+        <li class="hiddeen">İ</li>
+        <li class="hiddeen">Z</li>
+        <br />
+        <h1 style="color:#ffffff;">@HttpContext.Current.User.Identity.Name</h1>
+    </ul>
+    
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+        $(document).ready(function () {
+            'use strict';
+
+            var texxt = $('ul li');
+            texxt.removeClass('hiddeen');
+
+        });
+</script>

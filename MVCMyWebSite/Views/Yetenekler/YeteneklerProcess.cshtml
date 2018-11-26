@@ -1,0 +1,23 @@
+﻿@using MVCMyWebSite.ViewModel;
+@model YeteneklerViewModel
+@{
+    ViewBag.Title = "BenkimimProcess";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+<link rel="shortcut icon" href="#">
+
+@using (Html.BeginForm("YeteneklerEkleGuncelle", "Yetenekler", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.yetenekler.baslik , "Yetenek", new { @style = "color:#ffffff; " })
+        @Html.TextBoxFor(m => m.yetenekler.baslik, new { @class = "form-control", @style = "background-color:#ffffff; color:#000000;" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.yetenekler.deger, "Ne Kadar Bildiğini Yüz Üzerinden Bir Sayıyla Belirt", new { @class = "", @style = "color:#ffffff;" })
+        @Html.TextBoxFor(m => m.yetenekler.deger, new { @class = "form-control", @style = "background-color:#ffffff; color:#000000;" })
+    </div>
+    <br />
+    @Html.HiddenFor(m => m.yetenekler.id)
+    <button type="submit" class="btn btn-success">Kaydet</button>
+}
+

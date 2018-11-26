@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="mysiteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="anasayfaSlider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SliderBaslik" Type="nvarchar" MaxLength="250" />
+          <Property Name="SliderAciklama" Type="nvarchar" MaxLength="500" />
+          <Property Name="SliderImage" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="SliderOlusturmaTarihi" Type="datetime" />
+          <Property Name="SliderGuncellemeTarihi" Type="datetime" />
+          <Property Name="SliderSirasi" Type="tinyint" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="benkimim">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="baslik" Type="text" />
+          <Property Name="uzunyazi" Type="text" />
+        </EntityType>
+        <EntityType Name="egitim">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="baslik" Type="text" />
+          <Property Name="uzunyazi" Type="text" />
+        </EntityType>
+        <EntityType Name="hizmetler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="baslik" Type="text" />
+          <Property Name="uzunyazi" Type="text" />
+        </EntityType>
+        <EntityType Name="iletisim">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="text" />
+          <Property Name="email" Type="text" />
+          <Property Name="topic" Type="text" />
+          <Property Name="message" Type="text" />
+          <Property Name="pcname" Type="text" />
+          <Property Name="lanip" Type="text" />
+          <Property Name="wanip" Type="text" />
+          <Property Name="macadress" Type="text" />
+        </EntityType>
+        <EntityType Name="kisisel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="text" />
+          <Property Name="il" Type="text" />
+          <Property Name="ilce" Type="text" />
+          <Property Name="telefon" Type="text" />
+        </EntityType>
+        <EntityType Name="KULLANICILAR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KULLANICIADI" Type="nvarchar" MaxLength="50" />
+          <Property Name="SIFRE" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="TARIH" Type="date" />
+          <Property Name="KTURU_ID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'mysite.dbo.KullaniciTurleri' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="KullaniciTurleri">
+          <Key>
+            <PropertyRef Name="KullaniciTuruID" />
+          </Key>
+          <Property Name="KullaniciTuruID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciTuruAdi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tecrube">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="baslik" Type="text" />
+          <Property Name="tarih" Type="text" />
+          <Property Name="uzunyazi" Type="text" />
+        </EntityType>
+        <EntityType Name="yetenekler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="baslik" Type="text" />
+          <Property Name="deger" Type="text" />
+        </EntityType>
+        <EntityContainer Name="mysiteModelStoreContainer">
+          <EntitySet Name="anasayfaSlider" EntityType="Self.anasayfaSlider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="benkimim" EntityType="Self.benkimim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="egitim" EntityType="Self.egitim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hizmetler" EntityType="Self.hizmetler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="iletisim" EntityType="Self.iletisim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kisisel" EntityType="Self.kisisel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KULLANICILAR" EntityType="Self.KULLANICILAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tecrube" EntityType="Self.tecrube" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="yetenekler" EntityType="Self.yetenekler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KullaniciTurleri" EntityType="Self.KullaniciTurleri" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [KullaniciTurleri].[KullaniciTuruID] AS [KullaniciTuruID], 
+    [KullaniciTurleri].[KullaniciTuruAdi] AS [KullaniciTuruAdi]
+    FROM [dbo].[KullaniciTurleri] AS [KullaniciTurleri]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mysiteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="anasayfaSlider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SliderBaslik" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SliderAciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SliderImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="SliderOlusturmaTarihi" Type="DateTime" Precision="3" />
+          <Property Name="SliderGuncellemeTarihi" Type="DateTime" Precision="3" />
+          <Property Name="SliderSirasi" Type="Byte" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="benkimim">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="baslik" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="uzunyazi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="egitim">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="baslik" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="uzunyazi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hizmetler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="baslik" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="uzunyazi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="iletisim">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="topic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pcname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="lanip" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="wanip" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="macadress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="kisisel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="il" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ilce" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="telefon" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="KULLANICILAR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KULLANICIADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SIFRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TARIH" Type="DateTime" Precision="0" />
+          <Property Name="KTURU_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tecrube">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="baslik" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tarih" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="uzunyazi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="yetenekler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="baslik" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="deger" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="KullaniciTurleri">
+          <Key>
+            <PropertyRef Name="KullaniciTuruID" />
+          </Key>
+          <Property Name="KullaniciTuruID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciTuruAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="mysiteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="anasayfaSlider" EntityType="Self.anasayfaSlider" />
+          <EntitySet Name="benkimim" EntityType="Self.benkimim" />
+          <EntitySet Name="egitim" EntityType="Self.egitim" />
+          <EntitySet Name="hizmetler" EntityType="Self.hizmetler" />
+          <EntitySet Name="iletisim" EntityType="Self.iletisim" />
+          <EntitySet Name="kisisel" EntityType="Self.kisisel" />
+          <EntitySet Name="KULLANICILAR" EntityType="Self.KULLANICILAR" />
+          <EntitySet Name="tecrube" EntityType="Self.tecrube" />
+          <EntitySet Name="yetenekler" EntityType="Self.yetenekler" />
+          <EntitySet Name="KullaniciTurleri" EntityType="Self.KullaniciTurleri" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mysiteModelStoreContainer" CdmEntityContainer="mysiteEntities">
+          <EntitySetMapping Name="anasayfaSlider">
+            <EntityTypeMapping TypeName="mysiteModel.anasayfaSlider">
+              <MappingFragment StoreEntitySet="anasayfaSlider">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="SliderSirasi" ColumnName="SliderSirasi" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SliderBaslik" ColumnName="SliderBaslik" />
+                <ScalarProperty Name="SliderAciklama" ColumnName="SliderAciklama" />
+                <ScalarProperty Name="SliderImage" ColumnName="SliderImage" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="SliderOlusturmaTarihi" ColumnName="SliderOlusturmaTarihi" />
+                <ScalarProperty Name="SliderGuncellemeTarihi" ColumnName="SliderGuncellemeTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="benkimim">
+            <EntityTypeMapping TypeName="mysiteModel.benkimim">
+              <MappingFragment StoreEntitySet="benkimim">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="baslik" ColumnName="baslik" />
+                <ScalarProperty Name="uzunyazi" ColumnName="uzunyazi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="egitim">
+            <EntityTypeMapping TypeName="mysiteModel.egitim">
+              <MappingFragment StoreEntitySet="egitim">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="baslik" ColumnName="baslik" />
+                <ScalarProperty Name="uzunyazi" ColumnName="uzunyazi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hizmetler">
+            <EntityTypeMapping TypeName="mysiteModel.hizmetler">
+              <MappingFragment StoreEntitySet="hizmetler">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="baslik" ColumnName="baslik" />
+                <ScalarProperty Name="uzunyazi" ColumnName="uzunyazi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iletisim">
+            <EntityTypeMapping TypeName="mysiteModel.iletisim">
+              <MappingFragment StoreEntitySet="iletisim">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="topic" ColumnName="topic" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="pcname" ColumnName="pcname" />
+                <ScalarProperty Name="lanip" ColumnName="lanip" />
+                <ScalarProperty Name="wanip" ColumnName="wanip" />
+                <ScalarProperty Name="macadress" ColumnName="macadress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kisisel">
+            <EntityTypeMapping TypeName="mysiteModel.kisisel">
+              <MappingFragment StoreEntitySet="kisisel">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="il" ColumnName="il" />
+                <ScalarProperty Name="ilce" ColumnName="ilce" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KULLANICILAR">
+            <EntityTypeMapping TypeName="mysiteModel.KULLANICILAR">
+              <MappingFragment StoreEntitySet="KULLANICILAR">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="KULLANICIADI" ColumnName="KULLANICIADI" />
+                <ScalarProperty Name="SIFRE" ColumnName="SIFRE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+                <ScalarProperty Name="KTURU_ID" ColumnName="KTURU_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tecrube">
+            <EntityTypeMapping TypeName="mysiteModel.tecrube">
+              <MappingFragment StoreEntitySet="tecrube">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="baslik" ColumnName="baslik" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="uzunyazi" ColumnName="uzunyazi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="yetenekler">
+            <EntityTypeMapping TypeName="mysiteModel.yetenekler">
+              <MappingFragment StoreEntitySet="yetenekler">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="baslik" ColumnName="baslik" />
+                <ScalarProperty Name="deger" ColumnName="deger" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KullaniciTurleri">
+            <EntityTypeMapping TypeName="mysiteModel.KullaniciTurleri">
+              <MappingFragment StoreEntitySet="KullaniciTurleri">
+                <ScalarProperty Name="KullaniciTuruID" ColumnName="KullaniciTuruID" />
+                <ScalarProperty Name="KullaniciTuruAdi" ColumnName="KullaniciTuruAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

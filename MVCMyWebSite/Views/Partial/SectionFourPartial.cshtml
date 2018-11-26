@@ -1,0 +1,222 @@
+﻿@using MVCMyWebSite.Models;
+@model List<yetenekler>
+@{
+    Layout = null;
+}
+<style>
+    /*html,
+    body {
+        margin: 0 auto;
+        height: 100%;
+    }*/
+
+    pre {
+        padding: 0;
+        margin: 0;
+        background-color:black;
+        height:250px;
+        border:0px solid #fff0;
+        border-radius:0px;
+    }
+
+    .load {
+        margin: 0 auto;
+        min-height: 100%;
+        width: 100%;
+        height:auto;
+        background: black;
+    }
+
+    .term {
+        font-family: monospace;
+        color: #25ff00;
+        opacity: 0.8;
+        font-size: 1em;
+        overflow-y: auto;
+        overflow-x: auto;
+        padding-top: 10px;
+        padding-left: 20px;
+    }
+
+        .term:after {
+            content: "_";
+            opacity: 1;
+            animation: cursor 1s infinite;
+        }
+
+    @@keyframes cursor {
+        0% {
+            opacity: 0;
+        }
+
+        40% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        90% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+</style>
+
+<section class="colorlib-skills" data-section="skills">
+    <div class="colorlib-narrow-content">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+                <span class="heading-meta">Özelleştirilmiş </span>
+                <h2 class="colorlib-heading animate-box">Yeteneklerim</h2>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom:20px;">
+            <div class="load">
+                <pre id="default" class="term"></pre>
+            </div>
+        </div>
+        
+        <div class="row" style="margin-bottom:20px;">
+            @*<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+                <p>İşaretleme dili, programlama dilleri ve veri tabanı dili üzerindeki ilerlemelerim.</p>
+            </div>*@
+            @{
+
+                int b = 1;
+
+            }
+            @foreach (var item in Model)
+            {
+            <div class="col-md-6 animate-box tut" data-animate-effect="fadeInLeft">
+                <div class="progress-wrap">
+                    <h3>@item.baslik</h3>
+                    <div class="progress">
+                        <div class="progress-bar color-@{@b;}" role="progressbar" aria-valuenow="100"
+                             aria-valuemin="0" aria-valuemax="100" style="width:@item.deger%">
+                            <span>@item.deger%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        if (b==6)
+        {
+            b = 0;
+        }
+        b = b + 1;
+    }
+            @*<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
+                <div class="progress-wrap">
+                    <h3>jQuery</h3>
+                    <div class="progress">
+                        <div class="progress-bar color-2" role="progressbar" aria-valuenow="60"
+                             aria-valuemin="0" aria-valuemax="100" style="width:60%">
+                            <span>60%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+                <div class="progress-wrap">
+                    <h3>HTML5</h3>
+                    <div class="progress">
+                        <div class="progress-bar color-3" role="progressbar" aria-valuenow="85"
+                             aria-valuemin="0" aria-valuemax="100" style="width:85%">
+                            <span>85%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
+                <div class="progress-wrap">
+                    <h3>CSS3</h3>
+                    <div class="progress">
+                        <div class="progress-bar color-4" role="progressbar" aria-valuenow="90"
+                             aria-valuemin="0" aria-valuemax="100" style="width:90%">
+                            <span>90%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+                <div class="progress-wrap">
+                    <h3>WordPress</h3>
+                    <div class="progress">
+                        <div class="progress-bar color-5" role="progressbar" aria-valuenow="70"
+                             aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                            <span>70%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
+                <div class="progress-wrap">
+                    <h3>SEO</h3>
+                    <div class="progress">
+                        <div class="progress-bar color-6" role="progressbar" aria-valuenow="80"
+                             aria-valuemin="0" aria-valuemax="100" style="width:80%">
+                            <span>80%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        </div>
+        
+    </div>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+    var a = [];
+    for (var i = 0; i < $(".tut h3").length; i++) {
+        a[i] = $(".tut h3")[i].innerHTML;
+    }
+        var textarea = $('.term');
+        var speed = 400;
+        //var a = ['C#', 'JavaScript', 'Php'];
+        //console.log(a);
+        var i = 0;
+        var sayac = 0;
+        //runner();
+
+        function runner() {
+            
+                textarea.append(a[sayac].charAt(i));
+                i++;
+            
+            setTimeout(
+              function () {
+                  if (i < a[sayac].length) {
+                      runner();
+
+                  }
+                  else {
+                      textarea.append("<br>")
+                      i = 0;
+                      sayac += 1;
+                      if (sayac==a.length) {
+                          sayac = 0;
+                      }
+                  }
+                  //console.log(Math.floor(Math.random() * 220) + 250);
+              }, Math.floor(Math.random() * 220) + 50);
+        }
+
+
+        function goON() {
+            //$("pre").text("");
+            document.getElementById("default").innerText = "";
+            for (var e = 0; e < a.length; e++) {
+                runner();
+            }
+        }
+        
+        setInterval(function () {
+            goON();
+        }, 10000);
+
+</script>

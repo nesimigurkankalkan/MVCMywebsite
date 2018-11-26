@@ -1,0 +1,93 @@
+﻿@using MVCMyWebSite.Models
+@model List<tecrube>
+
+    <section class="colorlib-experience" data-section="experience">
+        <div class="colorlib-narrow-content">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+                    <span class="heading-meta">TECRÜBELERIM</span>
+                    <h2 class="colorlib-heading animate-box">İŞ TECRÜBELERI</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="timeline-centered">
+                        @{ 
+                            int a = 1;
+                        }
+                        @foreach (var item in Model)
+                        {
+
+
+                        <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+                            <div class="timeline-entry-inner">
+                                <div class="timeline-icon color-@{@a} ">
+                                    <i class="icon-pen2"></i>
+                                </div>
+                                <div class="timeline-label">
+                                    <h2><a href="#">@item.baslik</a> <span>@item.tarih</span></h2>
+                                    <p>@Html.Raw(item.uzunyazi)</p>
+                                </div>
+                            </div>
+                        </article>
+                            if (a == 5)
+                            {
+                                a = 0;  
+                            }
+                            a += 1;
+                        }
+                        @*<article class="timeline-entry animate-box" data-animate-effect="fadeInRight">
+                                <div class="timeline-entry-inner">
+                                    <div class="timeline-icon color-2">
+                                        <i class="icon-pen2"></i>
+                                    </div>
+                                    <div class="timeline-label">
+                                        <h2><a href="#">Front End Developer at Google Company</a> <span>2017-2018</span></h2>
+                                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+                                <div class="timeline-entry-inner">
+                                    <div class="timeline-icon color-3">
+                                        <i class="icon-pen2"></i>
+                                    </div>
+                                    <div class="timeline-label">
+                                        <h2><a href="#">System Analyst</a> <span>2017-2018</span></h2>
+                                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="timeline-entry animate-box" data-animate-effect="fadeInTop">
+                                <div class="timeline-entry-inner">
+                                    <div class="timeline-icon color-4">
+                                        <i class="icon-pen2"></i>
+                                    </div>
+                                    <div class="timeline-label">
+                                        <h2><a href="#">Creative Designer</a> <span>2017-2018</span></h2>
+                                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+                                <div class="timeline-entry-inner">
+                                    <div class="timeline-icon color-5">
+                                        <i class="icon-pen2"></i>
+                                    </div>
+                                    <div class="timeline-label">
+                                        <h2><a href="#">UI/UX Designer at Envato</a> <span>2017-2018</span></h2>
+                                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                                    </div>
+                                </div>
+                            </article>*@
+                        <article class="timeline-entry begin animate-box" data-animate-effect="fadeInBottom">
+                            <div class="timeline-entry-inner">
+                                <div class="timeline-icon color-none">
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

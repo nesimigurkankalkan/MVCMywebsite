@@ -1,0 +1,95 @@
+﻿    #intro {
+        position: absolute;
+        left: 0;
+        top: 16%;
+        padding: 0, 20px;
+        /*width: 100%;*/
+        text-align: center;
+    }
+
+    body {
+        margin: 0;
+        font: normal 75% Arial, Helvetica, sans-serif;
+    }
+
+    canvas {
+        display: block;
+        vertical-align: bottom;
+    }
+
+    #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #482d8f;
+        background-image: url("");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
+    }
+
+    form {
+        padding: 20px 0;
+        position: relative;
+        z-index: 2;
+    }
+
+        form input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            outline: 0;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 250px;
+            border-radius: 3px;
+            padding: 10px 15px;
+            margin: 0 auto 1% auto;
+            display: block;
+            text-align: center;
+            font-size: 18px;
+            color: white;
+            -webkit-transition-duration: 0.25s;
+            transition-duration: 0.25s;
+            font-weight: 300;
+        }
+
+            form input:hover {
+                background-color: rgba(255, 255, 255, 0.4);
+            }
+
+            form input:focus {
+                /*background-color: white;*/
+                width: 300px;
+                color: #ffffff;
+            }
+
+        form button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            outline: 0;
+            background-color: #f6e74a;
+            border: 0;
+            padding: 10px 15px;
+            color: #000000;
+            border-radius: 3px;
+            width: 250px;
+            cursor: pointer;
+            font-size: 18px;
+            -webkit-transition-duration: 0.25s;
+            transition-duration: 0.25s;
+        }
+
+            form button:hover {
+                background-color: #f5f7f9;
+            }
+
+    .logo_img {
+        left: 0;
+        top: -10px;
+    }
+
+        .logo_img img {
+            max-width: 100%;
+        }

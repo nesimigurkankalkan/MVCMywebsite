@@ -1,0 +1,41 @@
+﻿@using MVCMyWebSite.ViewModel;
+@model BenKimimViewModel
+@{
+    ViewBag.Title = "BenkimimProcess";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+<link rel="shortcut icon" href="#">
+
+<style>
+</style>
+
+
+@using (Html.BeginForm("BenkimimEkleGuncelle", "Benkimim",FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m=> m.benkimim.baslik, "Başlık", new {@style="color:#ffffff; "})
+        @Html.TextBoxFor(m=> m.benkimim.baslik, new {@class="form-control",@style="background-color:#ffffff; color:#000000;" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.benkimim.uzunyazi, "İçerik", new { @class = "", @style ="color:#ffffff;" })
+        @Html.TextAreaFor(m => m.benkimim.uzunyazi, new { @id = "CContentEditor", @class = "form-control" })
+        @*@Html.LabelFor(m => m.benkimim.id, "id", new { @class = "", @style = "color:#ffffff;" })*@
+    </div>
+    <br />
+    @Html.HiddenFor(m=>m.benkimim.id)
+    <button type="submit" class="btn btn-success">Kaydet</button>
+}
+<!--CkEditor-->
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script src="~/Scripts/ckfinder/ckfinder.js"></script>
+<script type="text/javascript">
+     var editor = CKEDITOR.instances['CContentEditor'];
+     if (editor) { editor.destroy(true); }
+      CKEDITOR.replace('CContentEditor', {
+      enterMode: CKEDITOR.ENTER_BR,
+     });
+    CKFinder.setupCKEditor(null, '@Url.Content("Scripts/ckfinder/")');
+</script>
+
+
+
