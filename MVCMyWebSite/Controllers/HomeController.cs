@@ -1,4 +1,5 @@
 ﻿using MVCMyWebSite.Models;
+using MVCMyWebSite.Models.ViewModelDTO;
 using MVCMyWebSite.ViewModel;
 using Newtonsoft.Json;
 using System;
@@ -30,7 +31,18 @@ namespace MVCMyWebSite.Controllers
         {
             MainViewModel model = new MainViewModel();
 
-            model.SectionOneAnsayfa = _db.anasayfaSlider.Where(r => r.Active == true).ToList();
+            model.SectionOneAnsayfa = _db.anasayfaSlider.Where(r => r.Active == true).Select(x=> new Models.ViewModelDTO.anasayfaSliderViewModel 
+            { 
+                SliderBaslik = x.SliderBaslik,
+                SliderAciklama = x.SliderAciklama,
+                SliderImage = x.SliderImage,
+                UserID = x.UserID,
+                SliderOlusturmaTarihi = x.SliderOlusturmaTarihi,
+                SliderGuncellemeTarihi = x.SliderGuncellemeTarihi,
+                SliderSirasi = x.SliderSirasi,
+                Active = x.Active
+            
+            }) .ToList();
             model.SectionTwoBenKimim = _db.benkimim.ToList();
             model.SectionThreeBenKimim = _db.hizmetler.ToList();
             model.SectionFourYetenekBilgileri = _db.yetenekler.ToList();

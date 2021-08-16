@@ -1,4 +1,4 @@
-﻿using MVCMyWebSite.Models;
+﻿using MVCMyWebSite.Models.ViewModelDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ namespace MVCMyWebSite.ViewModel
 {
     public class AnasayfaSliderViewModel
     {
-        public anasayfaSlider Anasayfa { get; set; }
+        public anasayfaSliderViewModel Anasayfa { get; set; }
         //public anasayfaSlider Specialanasayfa { get; set; }
     }
 }

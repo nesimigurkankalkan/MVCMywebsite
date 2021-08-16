@@ -215,6 +215,7 @@
     <Compile Include="Models\tecrube.cs">
       <DependentUpon>MysiteModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModelDTO\anasayfaSliderViewModel.cs" />
     <Compile Include="Models\yetenekler.cs">
       <DependentUpon>MysiteModel.tt</DependentUpon>
     </Compile>

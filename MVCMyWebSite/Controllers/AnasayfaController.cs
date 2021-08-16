@@ -1,4 +1,5 @@
 ﻿using MVCMyWebSite.Models;
+using MVCMyWebSite.Models.ViewModelDTO;
 using MVCMyWebSite.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -29,15 +30,30 @@ namespace MVCMyWebSite.Controllers
             {
                 AnasayfaSliderViewModel model = new AnasayfaSliderViewModel();
                 {
-                    model.Anasayfa = new anasayfaSlider();
+                    model.Anasayfa = new Models.ViewModelDTO.anasayfaSliderViewModel();
                 }
                 return View("AnasayfaProcess", model);
             }
             else
             {
-                var anasayfa1 = _db.anasayfaSlider.Find(id);
+                //var anasayfa1 = _db.anasayfaSlider.Find(id);
+                var anasayfa1 = _db.anasayfaSlider.Where(x => x.ID == id).Select(x => new Models.ViewModelDTO.anasayfaSliderViewModel
+                {
+                    ID = x.ID, 
+                    SliderBaslik = x.SliderBaslik,
+                    SliderAciklama = x.SliderAciklama,
+                    SliderImage = x.SliderImage,
+                    UserID = x.UserID,
+                    SliderOlusturmaTarihi = x.SliderOlusturmaTarihi,
+                    SliderGuncellemeTarihi = x.SliderGuncellemeTarihi,
+                    SliderSirasi = x.SliderSirasi,
+                    Active = x.Active
+                }).FirstOrDefault();
                 AnasayfaSliderViewModel anasayfaSlidermodel = new AnasayfaSliderViewModel();
                 anasayfaSlidermodel.Anasayfa = anasayfa1;
+                //anasayfaSlidermodel.Anasayfa.SliderBaslik = anasayfa1.SliderBaslik;
+                //anasayfaSlidermodel.Anasayfa.SliderAciklama = anasayfa1.SliderAciklama;
+                //anasayfaSlidermodel.Anasayfa.SliderSirasi = anasayfa1.SliderSirasi;
                 return View("AnasayfaProcess", anasayfaSlidermodel);
             }
             
@@ -64,13 +80,15 @@ namespace MVCMyWebSite.Controllers
                 Item.Anasayfa.SliderGuncellemeTarihi = DateTime.Now;
                 if (User.Identity.IsAuthenticated)
                 {
-                    Item.Anasayfa.UserID = Convert.ToInt32(User.Identity.Name);
+                    int kullaniciID = _db.KULLANICILAR.Where(x => x.KULLANICIADI == User.Identity.Name).Select(x=> x.ID).FirstOrDefault();
+                    Item.Anasayfa.UserID = kullaniciID;
                 }
                 else
                 {
 
                 }
-                _db.anasayfaSlider.Add(Item.Anasayfa);
+                //_db.anasayfaSlider.Add(Item.Anasayfa);
+                _db.anasayfaSlider.Add(new Models.anasayfaSlider() {SliderBaslik = Item.Anasayfa.SliderBaslik , SliderAciklama = Item.Anasayfa.SliderAciklama, SliderImage = Item.Anasayfa.SliderImage, SliderOlusturmaTarihi = Item.Anasayfa.SliderOlusturmaTarihi, SliderGuncellemeTarihi = Item.Anasayfa.SliderGuncellemeTarihi, SliderSirasi = Convert.ToByte(Item.Anasayfa.SliderSirasi), Active = Item.Anasayfa.Active } );
             }
             else
             {
@@ -83,7 +101,7 @@ namespace MVCMyWebSite.Controllers
                 guncellenecekveri.SliderBaslik = Item.Anasayfa.SliderBaslik;
                 guncellenecekveri.SliderAciklama = Item.Anasayfa.SliderAciklama;
                 guncellenecekveri.SliderGuncellemeTarihi = DateTime.Now;
-                guncellenecekveri.SliderSirasi = Item.Anasayfa.SliderSirasi;
+                guncellenecekveri.SliderSirasi = Convert.ToByte(Item.Anasayfa.SliderSirasi);
                 if (uploadFile != null)
                 {
                     string imgName = uploadFile.FileName;
