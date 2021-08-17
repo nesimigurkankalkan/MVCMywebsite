@@ -95,6 +95,8 @@ namespace MVCMyWebSite.Controllers
             //ViewData["ksisel"] = iletisimKisiselViewModel;
 
 
+            //Deneme
+
             ViewBag.Data = GetApiData();
 
 
