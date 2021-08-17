@@ -13,6 +13,7 @@ namespace MVCMyWebSite.Controllers
         mysiteEntities _db = new mysiteEntities();
         public ActionResult HizmetlerDetay()
         {
+            //Deneme3
             //HizmetlerViewModel hizmetlermodel = new HizmetlerViewModel();
             var model = _db.hizmetler.ToList();
 
