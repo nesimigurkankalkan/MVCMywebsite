@@ -97,7 +97,12 @@ namespace MVCMyWebSite.Controllers
             
 
 
+<<<<<<< HEAD
             //deneme2
+=======
+            //Deneme
+
+>>>>>>> gurkankalkan1
             ViewBag.Data = GetApiData();
 
 
