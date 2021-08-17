@@ -94,7 +94,10 @@ namespace MVCMyWebSite.Controllers
             //ViewData["tcrubelerim"] = _db.tecrube.ToList();
             //ViewData["ksisel"] = iletisimKisiselViewModel;
 
+            
 
+
+            //deneme2
             ViewBag.Data = GetApiData();
 
 
