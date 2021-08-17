@@ -33,7 +33,6 @@ namespace MVCMyWebSite.Controllers
                     
                     if (User != null)
                     {
-                    //BranchDenemesi
                     //Http Cookie ile Session Aç
                     //JavaScriptSerializer js = new JavaScriptSerializer();
                     //LoginVM usr = new LoginVM
