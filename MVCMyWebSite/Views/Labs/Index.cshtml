@@ -1,0 +1,239 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LabsHome</title>
+    <style type="text/css">
+            /* TRANSITIONS */
+            /* COLORS */
+            /* TREE MENU */
+            .lk-tree-menu {
+                padding: 10px;
+                list-style: none;
+            }
+
+            @@keyframes slideDown {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+
+            .lk-tree-menu input {
+                position: absolute;
+                clip: rect(0, 0, 0, 0);
+            }
+
+            .lk-tree-menu input ~ ul {
+                display: none;
+                padding: 0px;
+                animation: slideDown 0.5s ease-out;
+            }
+
+            .lk-tree-menu input:checked ~ ul {
+                display: block;
+            }
+
+            .lk-tree-menu input:checked ~ label.tree_label:before {
+                content: "–";
+            }
+
+            .lk-tree-menu input:checked ~ label.tree_label:after {
+                border-radius: 0 0.3em 0 0;
+                border-top: 1px solid #606060;
+                border-right: 1px solid #606060;
+                border-bottom: 0;
+                border-left: 0;
+                bottom: 0;
+                top: 0.5em;
+                height: auto;
+                margin: 5px 0px 0px 0px;
+            }
+
+            .lk-tree-menu > li:last-child:before {
+                display: none;
+            }
+
+            .lk-tree-menu li {
+                line-height: 1.2;
+                position: relative;
+                padding: 0 0 1em 1em;
+                list-style: none;
+            }
+
+                .lk-tree-menu li:last-child:before {
+                    height: 1em;
+                    bottom: auto;
+                }
+
+                .lk-tree-menu li:before {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: -0.5em;
+                    display: block;
+                    width: 0;
+                    border-left: 1px solid #606060;
+                    content: "";
+                }
+
+                .lk-tree-menu li:last-child {
+                    padding-bottom: 0;
+                }
+
+                .lk-tree-menu li ul li {
+                    padding: 0.5em 0 0 1em;
+                }
+
+            .lk-tree-menu label {
+                -webkit-transition: all 0.2s ease-out;
+                -moz-transition: all 0.2s ease-out;
+                -ms-transition: all 0.2s ease-out;
+                -o-transition: all 0.2s ease-out;
+                transition: all 0.2s ease-out;
+                border-radius: 3px;
+            }
+
+                .lk-tree-menu label.tree_label {
+                    cursor: pointer;
+                    margin: 0px;
+                    width: 100%;
+                    padding: 5px;
+                }
+
+                .lk-tree-menu label:hover {
+                    color: white;
+                    background: #000000;
+                }
+
+                .lk-tree-menu label.tree_label:before {
+                    background: #000000;
+                    color: #fff;
+                    position: relative;
+                    z-index: 1;
+                    float: left;
+                    margin: 0 1em 0 -2.3em;
+                    width: 1em;
+                    height: 1em;
+                    border-radius: 1em;
+                    content: "+";
+                    text-align: center;
+                    line-height: 0.9em;
+                }
+
+                .lk-tree-menu label.tree_label:after {
+                    border-bottom: 0;
+                }
+
+            .lk-tree-menu .tree_label {
+                position: relative;
+                display: inline-block;
+                background: #fff;
+            }
+
+            .lk-tree-menu .tree_label:after {
+                position: absolute;
+                top: 0.5em;
+                left: -1.5em;
+                display: block;
+                height: 0.5em;
+                width: 1em;
+                border-bottom: 1px solid #606060;
+                border-left: 1px solid #606060;
+                border-radius: 0 0 0 0.3em;
+                content: "";
+            }
+    </style>
+</head>
+<body>
+    <div style="width:40%;">
+        <div class="row justify-content-center ">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h2>Labs Menu</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="lk-tree-menu">
+                            <li>
+                                <input type="checkbox" checked="checked" id="smCB-1" />
+                                <label class="tree_label" for="smCB-1">Yazılım</label>
+                                <ul>
+                                    <li>
+                                        <input type="checkbox" checked="checked" id="smCB-2" />
+                                        <label class="tree_label" for="smCB-2">Console Application</label>
+                                        <ul>
+                                            <li>
+                                                <span class="tree_label">Console Write / WriteLine</span>
+                                            </li>
+                                            <li>
+                                                <span class="tree_label">Console ReadLine</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        @*<ul class="lk-tree-menu">
+                            <li>
+                                <input type="checkbox" checked="checked" id="smCB-1" />
+                                <label class="tree_label" for="smCB-1">Social Media</label>
+                                <ul>
+                                    <li>
+                                        <input type="checkbox" checked="checked" id="smCB-2" />
+                                        <label class="tree_label" for="smCB-2">Facebook</label>
+                                        <ul>
+                                            <li>
+                                                <input type="checkbox" checked="checked" id="smCB-3" />
+                                                <label class="tree_label" for="smCB-3">Ads</label>
+                                                <ul>
+                                                    <li>
+                                                        <span class="tree_label">Ads 1</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="tree_label">Ads 2</span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" checked="checked" id="smCB-4" />
+                                                <label class="tree_label" for="smCB-4">Pages</label>
+                                                <ul>
+                                                    <li>
+                                                        <span class="tree_label">Pages 1</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="tree_label">Pages 2</span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" checked="checked" id="smCB-5" />
+                                                <label class="tree_label" for="smCB-5">Deneme</label>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>*@
+                    </div>
+                    <div class="card-footer text-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="padding: 20px;">
+
+    </div>
+</body>
+</html>
