@@ -218,6 +218,21 @@
                 border-radius: 0 0 0 0.3em;
                 content: "";
             }
+
+            /*Code Line Number*/
+
+
+            pre {
+                counter-reset: line var(--line-num, 0);
+            }
+
+            pre span {
+                counter-increment: line;
+            }
+
+            pre span::before {
+                    content: counter(line) ' ';
+            }
     </style>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="shortcut icon" href="~/Content/images/NK.png">
@@ -245,8 +260,8 @@
 </head>
 <body>
     <div class="header">
-        <h1>Gürkan Nesimi Kalkan</h1>
-        <p>Kişisel Blog</p>
+        <h1>Kişisel Blog</h1>
+        <p>Gürkan Nesimi Kalkan</p>
     </div>
 
     <div class="topnav">
@@ -348,8 +363,15 @@
         </div>
 
         <div class="column" style="width:65.95%;">
-            <h2>Column</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
+            <h2>Console WriteLine</h2>
+            <p>Yeni bir satıra geçerek ekrana bir çıktı üretir. Bu komut içerisinde değişkenleri de barındırabilmektedir.</p>
+            <p>Kullanım</p>
+            <pre style="--line-num: 0;">
+                <span>static void Main(string[] args)</span>
+                <span>{</span>
+                <span>  Console.WriteLine("Hello World");</span>
+                <span>}</span>
+            </pre>
         </div>
 
         @*<div class="column">
