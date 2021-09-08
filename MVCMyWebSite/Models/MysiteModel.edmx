@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="mysiteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="mysiteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="anasayfaSlider">
           <Key>
             <PropertyRef Name="ID" />
@@ -26,6 +26,14 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="baslik" Type="text" />
           <Property Name="uzunyazi" Type="text" />
+        </EntityType>
+        <EntityType Name="BlogYazilari">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Baslik" Type="nvarchar" MaxLength="50" />
+          <Property Name="Yazi" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="egitim">
           <Key>
@@ -107,6 +115,7 @@ warning 6002: The table/view 'mysite.dbo.KullaniciTurleri' does not have a prima
         <EntityContainer Name="mysiteModelStoreContainer">
           <EntitySet Name="anasayfaSlider" EntityType="Self.anasayfaSlider" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="benkimim" EntityType="Self.benkimim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlogYazilari" EntityType="Self.BlogYazilari" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="egitim" EntityType="Self.egitim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hizmetler" EntityType="Self.hizmetler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="iletisim" EntityType="Self.iletisim" Schema="dbo" store:Type="Tables" />
@@ -233,7 +242,16 @@ warning 6002: The table/view 'mysite.dbo.KullaniciTurleri' does not have a prima
           <EntitySet Name="tecrube" EntityType="Self.tecrube" />
           <EntitySet Name="yetenekler" EntityType="Self.yetenekler" />
           <EntitySet Name="KullaniciTurleri" EntityType="Self.KullaniciTurleri" />
+          <EntitySet Name="BlogYazilari" EntityType="mysiteModel.BlogYazilari" />
         </EntityContainer>
+        <EntityType Name="BlogYazilari">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Yazi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -344,6 +362,15 @@ warning 6002: The table/view 'mysite.dbo.KullaniciTurleri' does not have a prima
               <MappingFragment StoreEntitySet="KullaniciTurleri">
                 <ScalarProperty Name="KullaniciTuruID" ColumnName="KullaniciTuruID" />
                 <ScalarProperty Name="KullaniciTuruAdi" ColumnName="KullaniciTuruAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlogYazilari">
+            <EntityTypeMapping TypeName="mysiteModel.BlogYazilari">
+              <MappingFragment StoreEntitySet="BlogYazilari">
+                <ScalarProperty Name="Yazi" ColumnName="Yazi" />
+                <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

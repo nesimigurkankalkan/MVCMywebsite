@@ -177,6 +177,9 @@
     <Compile Include="Models\benkimim.cs">
       <DependentUpon>MysiteModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BlogYazilari.cs">
+      <DependentUpon>MysiteModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DTO\Files.cs" />
     <Compile Include="Models\DTO\Kurlar.cs" />
     <Compile Include="Models\DTO\News.cs" />
@@ -2154,7 +2157,10 @@
     <Content Include="Views\Egitim\EgitimProcess.cshtml" />
     <Content Include="Views\Tecrube\TecrubeDetay.cshtml" />
     <Content Include="Views\Tecrube\TecrubeProcess.cshtml" />
+    <Content Include="Views\Shared\LabsLayoutPage.cshtml" />
     <Content Include="Views\Labs\Index.cshtml" />
+    <Content Include="Views\Labs\Content.cshtml" />
+    <Content Include="Views\Labs\Example.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

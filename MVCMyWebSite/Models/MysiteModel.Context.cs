@@ -35,5 +35,6 @@ namespace MVCMyWebSite.Models
         public virtual DbSet<tecrube> tecrube { get; set; }
         public virtual DbSet<yetenekler> yetenekler { get; set; }
         public virtual DbSet<KullaniciTurleri> KullaniciTurleri { get; set; }
+        public virtual DbSet<BlogYazilari> BlogYazilari { get; set; }
     }
 }
