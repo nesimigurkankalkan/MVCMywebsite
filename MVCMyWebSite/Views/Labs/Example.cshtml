@@ -72,7 +72,7 @@
 
     @*WebForm*@
 
-    <h2>Xml Export From DataTable</h2>
+    <h2>Excel Export From DataTable</h2>
     <p>WebForm olarak oluşturduğunuz sayfanızda Excel oluşturup bu dosyayı tarayıcıdan yüklemek isterseniz aşağıdaki kod işinize yarayacaktır.</p>
     <p>İki adet using eklenmesi gerekmekte biri Data Table için diğeri Excel'i oluşturabilmek için</p>
     <p>System.Data</p>
@@ -108,6 +108,58 @@
         <span>      }</span>
         <span>  }</span>
         <span>}</span>
+    </pre>
+
+
+
+
+
+    <h2>Xml Export From DataTable</h2>
+    <p>WebForm olarak oluşturduğunuz sayfanızda Xml oluşturup bu dosyayı tarayıcıdan yüklemek isterseniz aşağıdaki kod işinize yarayacaktır.</p>
+    <p>İki adet using eklenmesi gerekmekte biri Data Table için diğeri Xml'i oluşturabilmek için</p>
+    <p>System.Data</p>
+    <p>System.Xml</p>
+    <br />
+    <pre style="--line-num: 0; font-family: monospace;">
+        <span>protected void ExportXml(object sender, EventArgs e)</span>
+        <span>{</span>
+
+        <span>  using (MemoryStream stream = new MemoryStream())</span>
+        <span>  {   </span>
+        <span>      DataTable table = new DataTable();</span>
+        <span>      </span>
+        <span>      DataColumn coladsoyad = new DataColumn("Ad Soyad", typeof(String));</span>
+        <span>      table.Columns.Add(coladsoyad);</span>
+        <span>      DataColumn coltcno = new DataColumn("TC Numarası", typeof(String));</span>
+        <span>      table.Columns.Add(coltcno);</span>
+        <span>      </span>
+        <span>      DataRow rows = table.NewRow();</span>
+        <span>      rows[0] = "Gürkan Kalkan"</span>
+        <span>      rows[1] = "12345678912"</span>
+        <span>      </span>
+        <span>      XmlTextWriter xmlWriter = new XmlTextWriter(stream, System.Text.Encoding.UTF8);</span>
+        <span>      xmlWriter.WriteStartDocument();</span>
+        <span>      xmlWriter.WriteStartElement("Element1");</span>
+        <span>      </span>
+        <span>      for (int i = 0; i < table.Rows.Count; i++)</span>
+        <span>      {</span>
+        <span>          xmlWriter.WriteStartElement("kisi");</span>
+        <span>          xmlWriter.WriteElementString("adsoyad", table.Rows[i][0]);</span>
+        <span>          xmlWriter.WriteElementString("tcno", table.Rows[i][1]);</span>
+        <span>          xmlWriter.WriteEndElement();</span>
+        <span>      }</span>
+        <span>      xmlWriter.WriteEndElement();</span>
+        <span>      xmlWriter.WriteEndDocument();</span>
+        <span>      xmlWriter.Flush();</span>
+        <span>      byte[] byteArray = stream.ToArray();</span>
+        <span>      Response.Clear();</span>
+        <span>      Response.AddHeader("content-disposition", "attachment;filename=XMLFile.xml");</span>
+        <span>      Response.AppendHeader("Content-Lenght", byteArray.Length.ToString());</span>
+        <span>      Response.ContentType = "application/octet-stream";</span>
+        <span>      Response.BinaryWrite(byteArray);</span>
+        <span>      xmlWriter.Close();</span>
+        <span>      Response.End();</span>
+        <span>  }</span>
     </pre>
 </div>
 
