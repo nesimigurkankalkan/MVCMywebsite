@@ -29,5 +29,85 @@
     <span>}</span>
     </pre>
 
+
+    <h2>Console Read Kullanımı</h2>
+    <p>Kullanıcıdan int türünde veri okuması yapar.</p>
+    <p>Ardından okumuş olduğu verilerin ASCII tablosundaki karşılıklarını geri döndürür.</p>
+    <br />
+    <pre style="--line-num: 0; font-family: monospace;">
+    <span>static void Main(string[] args)</span>
+    <span>{</span>
+    <span>  int x = Console.Read();</span>
+    <span>  Console.WriteLine(x);</span>
+    <span>  Console.ReadKey();</span>
+    <span>}</span>
+    </pre>
+
+
+    <h2>Console ReadLine Kullanımı</h2>
+    <p>Kullanıcıdan string türünde veri okuması yapar.</p>
+    <p>Ardından okumuş olduğu verinin kendisini ekranda geri döndürür.</p>
+    <br />
+    <pre style="--line-num: 0; font-family: monospace;">
+    <span>static void Main(string[] args)</span>
+    <span>{</span>
+    <span>  string x = Console.ReadLine();</span>
+    <span>  Console.WriteLine(x);</span>
+    <span>  Console.ReadKey();</span>
+    <span>}</span>
+    </pre>
+
+    <h2>Console ReadKey Kullanımı</h2>
+    <p>Kullanıcı bir tuşa basana kadar konsol ekranında bekletir.</p>
+    <p>Konsola bir işlem yaptırttığımız esnada konsolun hemen kapanmaması için tercih edilir.</p>
+    <br />
+    <pre style="--line-num: 0; font-family: monospace;">
+    <span>static void Main(string[] args)</span>
+    <span>{</span>
+    <span>  Console.ReadKey();</span>
+    <span>}</span>
+    </pre>
+
+
+
+    @*WebForm*@
+
+    <h2>Xml Export From DataTable</h2>
+    <p>WebForm olarak oluşturduğunuz sayfanızda Excel oluşturup bu dosyayı tarayıcıdan yüklemek isterseniz aşağıdaki kod işinize yarayacaktır.</p>
+    <p>İki adet using eklenmesi gerekmekte biri Data Table için diğeri Excel'i oluşturabilmek için</p>
+    <p>System.Data</p>
+    <p>ClosedXML.Excel;</p>
+    <br />
+    <pre style="--line-num: 0; font-family: monospace;">
+        <span>protected void ExportExcel(object sender, EventArgs e)</span>
+        <span>{</span>
+        <span>  DataTable table = new DataTable();</span>
+        <span>  </span>
+        <span>  DataColumn coladsoyad = new DataColumn("Ad Soyad", typeof(String));</span>
+        <span>  table.Columns.Add(coladsoyad);</span>
+        <span>  DataColumn coltcno = new DataColumn("TC Numarası", typeof(String));</span>
+        <span>  table.Columns.Add(coltcno);</span>
+        <span>  </span>
+        <span>  DataRow rows = table.NewRow();</span>
+        <span>  rows[0] = "Gürkan Kalkan"</span>
+        <span>  rows[1] = "12345678912"</span>
+        <span>  </span>
+        <span>  using (XLWorkbook wb = new XLWorkbook())</span>
+        <span>  {</span>
+        <span>      var ws = wb.Worksheets.Add(table, "worksheet");</span>
+        <span>      HttpContext.Current.Response.Clear();</span>
+        <span>      HttpContext.Current.Response.Buffer = true;</span>
+        <span>      HttpContext.Current.Response.Charset = "";</span>
+        <span>      HttpContext.Current.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";</span>
+        <span>      HttpContext.Current.Response.AddHeader("content-disposition", "attachment;filename=" + "DokumanAdi" + ".xlsx");</span>
+        <span>      using (MemoryStream MyMemoryStream = new MemoryStream())</span>
+        <span>      {</span>
+        <span>          wb.SaveAs(MyMemoryStream);</span>
+        <span>          HttpContext.Current.Response.Flush();</span>
+        <span>          HttpContext.Current.Response.End();</span>
+        <span>      }</span>
+        <span>  }</span>
+        <span>}</span>
+    </pre>
 </div>
 
