@@ -3,7 +3,20 @@
     ViewBag.Title = "Example";
     Layout = "~/Views/Shared/LabsLayoutPage.cshtml";
 }
-
+<style>
+    t {
+        color:#0000ff;
+    }
+    ss {
+        color:#a31515;
+    }
+    cc {
+        color:#008000;
+    }
+    oo {
+        color: #3f8965;
+    }
+</style>
 <div class="column" style="width:65.95%;">
     @*Veritabanında Blog Yazilari Tablosunda Başlık Kolonuna Burası Eklenir Diğer Kalan Kodlarıda Veritabanında Blog Yazilari Tablosunda Yazi Kolonuna Burası Eklenir*@
     <h2>Console Write Kullanımı</h2>
@@ -110,10 +123,6 @@
         <span>}</span>
     </pre>
 
-
-
-
-
     <h2>Xml Export From DataTable</h2>
     <p>WebForm olarak oluşturduğunuz sayfanızda Xml oluşturup bu dosyayı tarayıcıdan yüklemek isterseniz aşağıdaki kod işinize yarayacaktır.</p>
     <p>İki adet using eklenmesi gerekmekte biri Data Table için diğeri Xml'i oluşturabilmek için</p>
@@ -121,45 +130,79 @@
     <p>System.Xml</p>
     <br />
     <pre style="--line-num: 0; font-family: monospace;">
-        <span>protected void ExportXml(object sender, EventArgs e)</span>
+        <span><t class="colorblue">protected void </t>ExportXml(<text class="colorblue">object</text> sender, EventArgs e)</span>
         <span>{</span>
 
-        <span>  using (MemoryStream stream = new MemoryStream())</span>
+        <span> <t class="colorblue">using</t> (MemoryStream stream = <t class="colorblue">new</t> MemoryStream())</span>
         <span>  {   </span>
-        <span>      DataTable table = new DataTable();</span>
+        <span>      DataTable table = <t>new</t> DataTable();</span>
         <span>      </span>
-        <span>      DataColumn coladsoyad = new DataColumn("Ad Soyad", typeof(String));</span>
+        <span>      DataColumn coladsoyad = <t>new</t> DataColumn(<ss>"Ad Soyad"</ss>, <t>typeof</t>(String));</span>
         <span>      table.Columns.Add(coladsoyad);</span>
-        <span>      DataColumn coltcno = new DataColumn("TC Numarası", typeof(String));</span>
+        <span>      DataColumn coltcno = <t>new</t> DataColumn(<ss>"TC Numarası"</ss>, <t>typeof</t>(String));</span>
         <span>      table.Columns.Add(coltcno);</span>
         <span>      </span>
         <span>      DataRow rows = table.NewRow();</span>
-        <span>      rows[0] = "Gürkan Kalkan"</span>
-        <span>      rows[1] = "12345678912"</span>
+        <span>      rows[0] = <ss>"Gürkan Kalkan"</ss></span>
+        <span>      rows[1] = <ss>"12345678912"</ss></span>
         <span>      </span>
-        <span>      XmlTextWriter xmlWriter = new XmlTextWriter(stream, System.Text.Encoding.UTF8);</span>
+        <span>      XmlTextWriter xmlWriter = <t>new</t> XmlTextWriter(stream, System.Text.Encoding.UTF8);</span>
         <span>      xmlWriter.WriteStartDocument();</span>
-        <span>      xmlWriter.WriteStartElement("Element1");</span>
+        <span>      xmlWriter.WriteStartElement(<ss>"Element1"</ss>);</span>
         <span>      </span>
-        <span>      for (int i = 0; i < table.Rows.Count; i++)</span>
+        <span>      <t>for</t> (<t>int</t> i = 0; i < table.Rows.Count; i++)</span>
         <span>      {</span>
-        <span>          xmlWriter.WriteStartElement("kisi");</span>
-        <span>          xmlWriter.WriteElementString("adsoyad", table.Rows[i][0]);</span>
-        <span>          xmlWriter.WriteElementString("tcno", table.Rows[i][1]);</span>
+        <span>          xmlWriter.WriteStartElement(<ss>"kisi"</ss>)</span>
+        <span>          xmlWriter.WriteElementString(<ss>"adsoyad"</ss>, table.Rows[i][0]);</span>
+        <span>          xmlWriter.WriteElementString(<ss>"tcno"</ss>, table.Rows[i][1]);</span>
         <span>          xmlWriter.WriteEndElement();</span>
         <span>      }</span>
         <span>      xmlWriter.WriteEndElement();</span>
         <span>      xmlWriter.WriteEndDocument();</span>
         <span>      xmlWriter.Flush();</span>
-        <span>      byte[] byteArray = stream.ToArray();</span>
+        <span>      <t>byte</t>[] byteArray = stream.ToArray();</span>
         <span>      Response.Clear();</span>
-        <span>      Response.AddHeader("content-disposition", "attachment;filename=XMLFile.xml");</span>
-        <span>      Response.AppendHeader("Content-Lenght", byteArray.Length.ToString());</span>
-        <span>      Response.ContentType = "application/octet-stream";</span>
+        <span>      Response.AddHeader(<ss>"content-disposition"</ss>, <ss>"attachment;filename=XMLFile.xml"</ss>);</span>
+        <span>      Response.AppendHeader(<ss>"Content-Lenght"</ss>, byteArray.Length.ToString());</span>
+        <span>      Response.ContentType = <ss>"application/octet-stream";</ss></span>
         <span>      Response.BinaryWrite(byteArray);</span>
         <span>      xmlWriter.Close();</span>
         <span>      Response.End();</span>
         <span>  }</span>
     </pre>
+
+
+    <h2>Entity Framework Lambda Expression Sorguları</h2>
+    <p>Entity Framework kullanarak Lambda ile kolayca veritabanından sorgular gerçekleştirebilirsiniz.</p>
+    <p>Aşağıdaki sorgular kolay anlaşılabilmesi açısında basitleştirilmiş şekilde yazılmıştır.</p>
+    <br />
+    <pre style="--line-num: 0; font-family: monospace;">
+        <span><cc>//kişiler tablosundaki herşeyi bir listeye aktarır.</cc></span>
+        <span><oo>List</oo> <<oo>kisiler</oo>> = _db.kisiler.ToList();</span>
+        <span>&nbsp;</span>
+        <span><cc>//kişiler tablosunda yer alan tüm Ad Soyad'ları bir listeye aktarır.</cc></span>
+        <span><oo>List</oo> <<oo>kisiler</oo>> = _db.kisiler.Select(x => x.AdSoyad).ToList();</span>
+        <span>&nbsp;</span>
+        <span><cc>//kişiler tablosunda yer alan tüm Ad Soyad'ların ilk 10 tanesini alır.</cc></span>
+        <span><oo>List</oo> <<oo>kisiler</oo>> = _db.kisiler.Select(x => x.AdSoyad).Take(10).ToList();</span>
+        <span>&nbsp;</span>
+        <span><cc>//kişileri ada göre sıralar.</cc></span>
+        <span><oo>List</oo> <<oo>kisiler</oo>> = _db.kisiler.OrderBy(x => x.AdSoyad).ToList();</span>
+        <span>&nbsp;</span>
+        <span><cc>//kişileri ada göre tersten sıralar.</cc></span>
+        <span><oo>List</oo> <<oo>kisiler</oo>> = _db.kisiler.OrderByDescending(x => x.AdSoyad).ToList();</span>
+        <span>&nbsp;</span>
+        <span><cc>//kişileri ada göre tersten sıralayıp ilk 3 tanesini alır.</cc></span>
+        <span><oo>List</oo> <<oo>kisiler</oo>> = _db.kisiler.OrderByDescending(x => x.AdSoyad).Take(3).ToList();</span>
+        <span>&nbsp;</span>
+        <span><cc>//ID si 2 olan kişiyi getir</cc></span>
+        <span><oo>List</oo> <<oo>kisiler</oo>> = _db.kisiler.FirstOrDefault(x => x.Id == 2);</span>
+        <span>&nbsp;</span>
+        <span><cc>//ID si 2 olan kişinin yaşını olur.</cc></span>
+        <span><oo>List</oo> <<oo>kisiler</oo>> = _db.kisiler.FirstOrDefault(x => x.Id == 2);</span>
+    </pre>
+    
+    
+    
 </div>
 

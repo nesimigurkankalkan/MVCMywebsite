@@ -33,6 +33,7 @@ namespace MVCMyWebSite.Controllers
         [AllowAnonymous]
         public ActionResult Example()
         {
+            //https://www.pvladov.com/p/syntax-highlighter.html
             return View();
         }
 	}
