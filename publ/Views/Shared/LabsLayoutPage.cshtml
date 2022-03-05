@@ -1,0 +1,410 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    @*<meta name="viewport" content="width=device-width" />*@
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LabsHome</title>
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        /* Style the header */
+        .header {
+            background-color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Style the top navigation bar */
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            /* Style the topnav links */
+            .topnav a {
+                float: left;
+                display: block;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+                /* Change color on hover */
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+        /* Create three equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 15px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+        @@media screen and (max-width:600px) {
+            .column {
+                width: 100%;
+            }
+        }
+
+
+
+
+
+
+
+        /* TRANSITIONS */
+        /* COLORS */
+        /* TREE MENU */
+        .lk-tree-menu {
+            /*padding: 10px;*/
+            list-style: none;
+        }
+
+        @@keyframes slideDown {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .lk-tree-menu input {
+            position: absolute;
+            clip: rect(0, 0, 0, 0);
+        }
+
+            .lk-tree-menu input ~ ul {
+                display: none;
+                padding: 0px;
+                animation: slideDown 0.5s ease-out;
+            }
+
+            .lk-tree-menu input:checked ~ ul {
+                display: block;
+            }
+
+            .lk-tree-menu input:checked ~ label.tree_label:before {
+                content: "–";
+            }
+
+            .lk-tree-menu input:checked ~ label.tree_label:after {
+                border-radius: 0 0.3em 0 0;
+                border-top: 1px solid #606060;
+                border-right: 1px solid #606060;
+                border-bottom: 0;
+                border-left: 0;
+                bottom: 0;
+                top: 0.5em;
+                height: auto;
+                margin: 5px 0px 0px 1px;
+            }
+
+        .lk-tree-menu > li:last-child:before {
+            display: none;
+        }
+
+        .lk-tree-menu li {
+            line-height: 1.2;
+            position: relative;
+            padding: 0 0 1em 1em;
+            list-style: none;
+        }
+
+            .lk-tree-menu li:last-child:before {
+                height: 1em;
+                bottom: auto;
+            }
+
+            .lk-tree-menu li:before {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: -0.5em;
+                display: block;
+                width: 0;
+                border-left: 1px solid #606060;
+                content: "";
+            }
+
+            .lk-tree-menu li:last-child {
+                padding-bottom: 0;
+            }
+
+            .lk-tree-menu li ul li {
+                padding: 0.5em 0 0 1em;
+            }
+
+        .lk-tree-menu label {
+            -webkit-transition: all 0.2s ease-out;
+            -moz-transition: all 0.2s ease-out;
+            -ms-transition: all 0.2s ease-out;
+            -o-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+            border-radius: 3px;
+        }
+
+            .lk-tree-menu label.tree_label {
+                cursor: pointer;
+                margin: 0px;
+                width: 100%;
+                padding: 5px;
+            }
+
+            .lk-tree-menu label:hover {
+                color: white;
+                background: #000000;
+            }
+
+            .lk-tree-menu label.tree_label:before {
+                background: #000000;
+                color: #fff;
+                position: relative;
+                z-index: 1;
+                float: left;
+                margin: 0 1em 0 -2.3em;
+                width: 1em;
+                height: 1em;
+                border-radius: 1em;
+                content: "+";
+                text-align: center;
+                line-height: 0.9em;
+            }
+
+            .lk-tree-menu label.tree_label:after {
+                border-bottom: 0;
+            }
+
+        .lk-tree-menu .tree_label {
+            position: relative;
+            display: inline-block;
+            background: #fff;
+        }
+
+            .lk-tree-menu .tree_label:after {
+                position: absolute;
+                top: 0.5em;
+                left: -1.5em;
+                display: block;
+                height: 0.5em;
+                width: 1em;
+                border-bottom: 1px solid #606060;
+                border-left: 1px solid #606060;
+                border-radius: 0 0 0 0.3em;
+                content: "";
+            }
+
+        /*Code Line Number*/
+
+
+        pre {
+            counter-reset: line var(--line-num, 0);
+        }
+
+            pre span {
+                counter-increment: line;
+            }
+
+                pre span::before {
+                    content: counter(line) ' ';
+                }
+    </style>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="~/Content/images/NK.png">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="~/Content/css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="~/Content/css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css">
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="~/Content/css/flexslider.css">
+    <!-- Flaticons  -->
+    <!--<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">-->
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/css/owl.theme.default.min.css">
+    <!-- Theme style  -->
+    <link href="~/Content/css/jquery-confirm.css" rel="stylesheet" />
+    <!-- Modernizr JS -->
+    <script src="~/Scripts/modernizr-2.6.2.min.js"></script>
+    <!-- ReCaptcha -->
+</head>
+<body>
+    <div class="header">
+        <h1>Kişisel Blog</h1>
+        <p>Gürkan Nesimi Kalkan</p>
+    </div>
+
+    <div class="topnav">
+        @*<a href="#">Link</a>
+            <a href="#">Link</a>
+            <a href="#">Link</a>*@
+        <center><span style="color:white;">LABS</span></center>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="row justify-content-center ">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h2>Labs Menu</h2>
+                        </div>
+                        <div class="card-body">
+                            <ul class="lk-tree-menu">
+                                <li>
+                                    <input type="checkbox" checked="checked" id="bgHeader-1" />
+                                    <label class="tree_label" for="bgHeader-1">Menu</label>
+                                    <ul>
+                                        <li>
+                                            <input type="checkbox" checked="checked" id="mdHeader-1" />
+                                            <label class="tree_label" for="mdHeader-1">Yazılım</label>
+                                            <ul>
+                                                <li>
+                                                    <input type="checkbox" checked="checked" id="smHeader-1" />
+                                                    <label class="tree_label" for="smHeader-1">Console Application</label>
+                                                    <ul>
+                                                        <li>@*<a class="btn btn-primary" href="/Benkimim/BenkimimProcess/@item.id">Güncelle</a>*@
+                                                            <span class="tree_label"><a href="/Labs/Content/1">Console Write</a></span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="tree_label"><a href="/Labs/Content/2">Console WriteLine</a></span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="tree_label"><a href="/Labs/Content/3">Console Read</a></span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="tree_label"><a href="/Labs/Content/4">Console ReadLine</a></span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="tree_label"><a href="/Labs/Content/5">Console ReadKey</a></span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" checked="checked" id="smHeader-2" />
+                                                    <label class="tree_label" for="smHeader-2">Web Form</label>
+                                                    <ul>
+                                                        <li>
+                                                            <span class="tree_label"><a href="/Labs/Content/6">Excel Export</a></span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="tree_label"><a href="/Labs/Content/7">Xml Export</a></span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+
+                                        </li>
+
+                                        <li>
+                                            <input type="checkbox" checked="checked" id="mdHeader-2" />
+                                            <label class="tree_label" for="mdHeader-2">Diğer</label>
+                                            <ul>
+                                                <li>
+                                                    <input type="checkbox" checked="checked" id="smHeader-3" />
+                                                    <label class="tree_label" for="smHeader-3">Farklar</label>
+                                                    <ul>
+                                                        <li>
+                                                            <span class="tree_label">Youtube Spotify Tidal Arasındaki Ses Farkı</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" checked="checked" id="smHeader-3" />
+                                                    <label class="tree_label" for="smHeader-3">Php</label>
+                                                    <ul>
+                                                        <li>
+                                                            <span class="tree_label">Ornek1</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="tree_label">ornek2</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" checked="checked" id="smHeader-4" />
+                                                    <label class="tree_label" for="smHeader-4">Database</label>
+                                                    <ul>
+                                                        <li>
+                                                            <span class="tree_label">My SQL</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="tree_label">No SQL</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-footer text-center">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @RenderBody()
+
+        @*<div class="column">
+                <h2>Column</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
+            </div>*@
+    </div>
+
+    @*<div class="card-footer text-center">
+    </div>*@
+                    
+    <script src="~/Scripts/jquery.min.js"></script>
+    @*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>*@
+    <!-- jQuery Easing -->
+    <script src="~/Content/js/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="~/Content/js/jquery.waypoints.min.js"></script>
+    <!-- Flexslider -->
+    <script src="~/Content/js/jquery.flexslider-min.js"></script>
+    <!-- Owl carousel -->
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <!-- Counters -->
+    <script src="~/Content/js/jquery.countTo.js"></script>
+    <!-- It is important something because If there is an error as "uncaught typeerror: $... sticky_in_parent" Use the links script with Jquery Library   -->
+    <script src="https://cdn.rawgit.com/leafo/sticky-kit/v1.1.2/jquery.sticky-kit.js"></script>
+    <!-- MAIN JS -->
+    <script src="~/Content/js/main.js"></script>
+
+    <!--MAIN JS-->
+    <script src="~/Scripts/jquery.lettering.js"></script>
+    <script src="~/Scripts/jquery.textillate.js"></script>
+    <script src="~/Scripts/jquery-confirm.js"></script>
+</body>
+</html>
+

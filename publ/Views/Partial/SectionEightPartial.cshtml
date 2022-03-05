@@ -1,0 +1,123 @@
+﻿@using MVCMyWebSite.ViewModel;
+@model IletisimKisiselViewModel
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("Ekle", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <section class="colorlib-contact" data-section="contact">
+        <div class="colorlib-narrow-content">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+                    <span class="heading-meta">İLETIŞIMDE KALIN</span>
+                    <h2 class="colorlib-heading">İLETIŞIM</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="colorlib-feature colorlib-feature-sm animate-box" data-animate-effect="fadeInLeft">
+                        <div class="colorlib-icon">
+                            <i class="icon-globe-outline"></i>
+                        </div>
+                        <div class="colorlib-text">
+
+                            <p><a href="#">@Model.email</a></p>
+
+
+                        </div>
+                    </div>
+                    
+                    @if (string.IsNullOrEmpty(@Model.ilce) == false || string.IsNullOrEmpty(@Model.il))
+                    {
+                    <div class="colorlib-feature colorlib-feature-sm animate-box" data-animate-effect="fadeInLeft">
+                        <div class="colorlib-icon">
+                            <i class="icon-map"></i>
+                        </div>
+                        <div class="colorlib-text">
+                            <p>@Model.ilce / @Model.il</p>
+                        </div>
+                    </div>
+                    }
+
+                    @if (string.IsNullOrEmpty(@Model.telefon) == false)
+                    {
+                    <div class="colorlib-feature colorlib-feature-sm animate-box" data-animate-effect="fadeInLeft">
+                        <div class="colorlib-icon">
+                            <i class="icon-phone"></i>
+                        </div>
+                        <div class="colorlib-text">
+
+
+                            <p>@Model.telefon</p>
+
+
+                        </div>
+                    </div>
+                    }
+                </div>
+
+                <div class="col-md-7 col-md-push-1">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1 col-md-pull-1 animate-box" data-animate-effect="fadeInRight">
+                            <form action="">
+                                <div class="form-group">
+                                    @*<input type="text" id="name" class="form-control" placeholder="Name">*@
+                                    @Html.TextBoxFor(m => m.iName, new { @class = "form-control", @placeholder="Name", @required ="required" })
+                                </div>
+                                <div class="form-group">
+                                    @*<input type="text" id="email" class="form-control" placeholder="Email">*@
+                                    @Html.TextBoxFor(m => m.iEmail, new { @class = "form-control", @placeholder="Email", @required = "required" })
+                                </div>
+                                <div class="form-group">
+                                    @*<input type="text" id="konu" class="form-control" placeholder="Subject">*@
+                                    @Html.TextBoxFor(m => m.iSubject, new { @class = "form-control", @placeholder= "Konu", @required = "required" })
+                                </div>
+                                <div class="form-group">
+                                    @*<textarea name="" id="mesaj" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>*@
+                                    @Html.TextAreaFor(m => m.iMsg, new {@id ="mesaj", @class = "form-control", @placeholder="Mesaj", @required = "required" })
+                                </div>
+                                <div class="form-group">
+                                    <div class="g-recaptcha" data-sitekey="6LeJkpcUAAAAAB0hbqgNBGMMXOtxNGqTemIlkLEm"></div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-send-message" id="send-message">Ekle</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <hr style="margin-top:0px; border-top:2px solid rgba(0, 0, 0, 0.075);" />
+            <center>
+                <br />
+                <h2>Döviz Kurları</h2>
+                <table cellpadding="0" cellspacing="0" id="kurlar" style="box-shadow:0px 0px 12px 7px rgba(0, 0, 0, 0.3);">
+                    <tr>
+                        <td></td>
+                        <td><b>Alış</b></td>
+                        <td><b>Satış</b></td>
+                    </tr>
+                    <tr>
+                        <td><b>Dolar</b></td>
+                        <td><span id="d_alis"></span></td>
+                        <td><span id="d_satis"></span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Euro</b></td>
+                        <td><span id="e_alis"></span></td>
+                        <td><span id="e_satis"></span></td>
+                    </tr>
+                </table>
+            </center>
+        </div>
+    </section>
+}
+
+
+@*@if (!string.IsNullOrEmpty(ViewBag.msg))
+{
+<script type="text/javascript">alert('@ViewBag.Message');</script>
+}*@
+

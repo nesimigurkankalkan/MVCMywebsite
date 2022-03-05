@@ -1,0 +1,42 @@
+﻿@using MVCMyWebSite.ViewModel
+@model TecrubeViewModel
+@{
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+<link rel="shortcut icon" href="#">
+
+@using (Html.BeginForm("TecrubeEkleGuncelle", "Tecrube", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.tecrube.baslik, "Başlık", new { @style = "color:#ffffff; " })
+        @Html.TextBoxFor(m => m.tecrube.baslik, new { @class = "form-control", @style = "background-color:#ffffff; color:#000000;" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.tecrube.tarih, "Başlık", new { @style = "color:#ffffff; " })
+        @Html.TextBoxFor(m => m.tecrube.tarih, new { @class = "form-control", @style = "background-color:#ffffff; color:#000000;" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.tecrube.uzunyazi, "İçerik", new { @class = "", @style = "color:#ffffff;" })
+        @Html.TextAreaFor(m => m.tecrube.uzunyazi, new { @id = "CContentEditor", @class = "form-control" })
+        @*@Html.LabelFor(m => m.benkimim.id, "id", new { @class = "", @style = "color:#ffffff;" })*@
+    </div>
+    <br />
+    @Html.HiddenFor(m => m.tecrube.id)
+    <button type="submit" class="btn btn-success">Kaydet</button>
+}
+<!--CkEditor-->
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script src="~/Scripts/ckfinder/ckfinder.js"></script>
+<script type="text/javascript">
+     var editor = CKEDITOR.instances['CContentEditor'];
+     if (editor) { editor.destroy(true); }
+      CKEDITOR.replace('CContentEditor', {
+      enterMode: CKEDITOR.ENTER_BR,
+     });
+    CKFinder.setupCKEditor(null, '@Url.Content("Scripts/ckfinder/")');
+</script>
+
+
+
+
+

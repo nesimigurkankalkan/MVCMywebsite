@@ -1,0 +1,95 @@
+﻿@using MVCMyWebSite.ViewModel;
+@model AdminMainViewModel
+@{
+    ViewBag.Title = "IletisimDetay";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+<link rel="shortcut icon" href="#">
+
+<style>
+    #example_filter {
+        margin-bottom: 10px;
+    }
+
+    table.dataTable.no-footer {
+        border-bottom: 1px solid rgba(34,36,38,.15);
+    }
+
+    .ui.pagination.menu .active.item {
+        background-color: #ffffff;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        color: white !important;
+        border: 1px solid #111;
+        background-color: #9d9d9d !important;
+    }
+
+    .ui.menu .item.disabled, .ui.menu .item.disabled:hover {
+        color: rgb(0, 0, 0) !important;
+    }
+
+    div.dt-buttons {
+        margin-left: 10px;
+    }
+
+    .ui.input {
+        color: rgba(255, 255, 255, 0.87);
+    }
+
+    .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+        color: #ffffff;
+    }
+</style>
+
+<div class="card mb-3">
+    <div class="card-header">
+        <center>
+            @*<i class="fas fa-table"></i>*@
+            <h2 style="color:#8fabff;">Mesaj Listesi</h2>
+        </center>
+    </div>
+    <br />
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example" class="ui celled table" cellspacing="0">
+
+                <thead>
+                    <tr>
+                        <th>Ad Soyad</th>
+                        <th>Mail</th>
+                        <th>Konu</th>
+                        <th>Mesaj</th>
+                        <th>PC Name</th>
+                        <th>Lan IP</th>
+                        <th>Wan IP</th>
+                        <th>Mac Adress</th>
+                        <th>Links</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.GetAlliletisim)
+                    {
+                        <tr>
+                            <td>@item.name</td>
+                            <td>@item.email</td>
+                            <td>@item.topic</td>
+                            <td>@item.message</td>
+                            <td>@item.pcname</td>
+                            <td>@item.lanip</td>
+                            <td>@item.wanip</td>
+                            <td>@item.macadress</td>
+                            <td><a class="btn btn-danger" href="/Iletisim/DeleteFromTab/@item.id">Sil</a></td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+            @*</div>*@
+        </div>
+    </div>
+</div>
+
+
+

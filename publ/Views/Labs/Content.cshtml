@@ -1,0 +1,12 @@
+﻿@using MVCMyWebSite.Models;
+@model BlogYazilari
+@{
+    ViewBag.Title = "Content";
+    Layout = "~/Views/Shared/LabsLayoutPage.cshtml";
+}
+
+<div class="column" style="width:65.95%;">
+    <h2>@Model.Baslik</h2>
+    @Html.Raw(@Model.Yazi.ToString())
+</div>
+

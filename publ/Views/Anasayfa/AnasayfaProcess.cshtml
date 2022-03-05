@@ -1,0 +1,50 @@
+﻿@using MVCMyWebSite.ViewModel;
+@model AnasayfaSliderViewModel
+@{
+    ViewBag.Title = "BenkimimProcess";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+<link rel="shortcut icon" href="#">
+
+@using (Html.BeginForm("AnasayfaEkleGuncelle", "Anasayfa", FormMethod.Post, new { enctype = "multipart/form-data"}))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Anasayfa.SliderBaslik, "Slayt Başlığı", new { @style = "color:#ffffff; " })
+        @Html.TextBoxFor(m => m.Anasayfa.SliderBaslik, new { @class = "form-control", @style = "background-color:#ffffff; color:#000000;" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Anasayfa.SliderAciklama, "Slayt Açıklaması", new { @class = "", @style = "color:#ffffff;" })
+        @Html.TextBoxFor(m => m.Anasayfa.SliderAciklama, new { @class = "form-control", @style = "background-color:#ffffff; color:#000000;" })
+    </div>
+    if (Model.Anasayfa.SliderImage != null)
+    {
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Anasayfa.SliderImage, "MevcutGorsel", new { @class = "", @style = "color:#ffffff;" })
+            <br />
+            @*<label class="col-sm-2 col-form-label text-right">Mevcut Görsel</label>*@
+            <div class="col-sm-12">
+                <a href="~/Images/@Model.Anasayfa.SliderImage" target="_blank"><img style="width:150px;" src="~/Content/@Model.Anasayfa.SliderImage" /></a>
+            </div>
+        </div>
+    }
+    <div class="form-group">
+        @Html.LabelFor(m => m.Anasayfa.SliderImage, "Slayt Görseli", new { @class = "", @style = "color:#ffffff;" })
+        <input type="file" class="form-control" id="imgInput" name="uploadFile" accept=".png,.jpg" style="background-color:#ffffff; color:#000000;">
+        <small style="color:#ffffff;">Seçtiğiniz görsellerin boyutu 1600*480 olmak zorundadır.</small><br>
+        <small style="color:#ffffff;">Seçtiğiniz görsellerin türü .png veya .jpg olmak zorundadır.</small>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Anasayfa.SliderSirasi, "Slayt Sırası", new { @class = "", @style = "color:#ffffff;" })
+        @Html.TextBoxFor(m => m.Anasayfa.SliderSirasi, new { @class = "form-control", @style = "background-color:#ffffff; color:#000000;" })
+    </div>
+    <br />
+    @Html.HiddenFor(m => m.Anasayfa.ID)
+    @Html.HiddenFor(m => m.Anasayfa.SliderImage)
+    @Html.HiddenFor(m => m.Anasayfa.Active)
+    @Html.HiddenFor(m => m.Anasayfa.SliderOlusturmaTarihi)
+    @Html.HiddenFor(m => m.Anasayfa.UserID)
+    <button type="submit" class="btn btn-success">Kaydet</button>
+}
+
+
+

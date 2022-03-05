@@ -1,0 +1,112 @@
+﻿@using MVCMyWebSite.ViewModel;
+@using MVCMyWebSite.Models.DTO;
+@model MainViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+
+@*@model MVCMyWebSite.Models.benkimim*@
+    @using MVCMyWebSite.Models;
+@{
+//var gelenanasayfa = (anasayfa)ViewData["ansayfa"];
+//////////////////////////////////////// IeNuMeRaBLe ////////////////////////////////////
+//anasayfa anasayfabilgileri = ViewData["ansayfa"] as anasayfa;
+//IEnumerable<benkimim> benimbilgiler = ViewData["bnkimim"] as IEnumerable<benkimim>;
+//IEnumerable<hizmetler> hizmetbilgileri = ViewData["hzmetlerim"] as IEnumerable<hizmetler>;
+
+//IEnumerable<yetenekler> yetenekbilgileri = ViewData["yteneklerim"] as IEnumerable<yetenekler>;
+//IEnumerable<egitim> egitimbilgileri = ViewData["eitimilerim"] as IEnumerable<egitim>;
+//IEnumerable<tecrube> tecrubebilgileri = ViewData["tcrubelerim"] as IEnumerable<tecrube>;
+//IEnumerable<kisisel> kisiselbilgiler1 = ViewData["ksisel"] as IEnumerable<kisisel>;
+//IletisimKisiselViewModel kisiselbilgiler = ViewData["ksisel"] as IletisimKisiselViewModel;
+//News apibilgileri = ViewBag.Data as News;
+}
+<div id="colorlib-main">
+   
+    @Html.Partial("~/Views/Partial/SectionOnePartial.cshtml", Model.SectionOneAnsayfa)
+    @Html.Partial("~/Views/Partial/SectionTwoPartial.cshtml", Model.SectionTwoBenKimim)
+    @Html.Partial("~/Views/Partial/SectionThreePartial.cshtml", Model.SectionThreeBenKimim)
+
+    <div id="colorlib-counter" class="colorlib-counters" style="background-image: url(../../Content/images/cover_bg_1.jpg);" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="colorlib-narrow-content">
+            <div class="row">
+            </div>
+            <div class="row">
+                @*<div id ="nkout" class="col-md-3 text-center animate-box">*@
+                <div class="col-md-12 text-center">
+                    @{
+                        string isim = @Session["Myname"].ToString();
+                        string[] s = isim.Split(' ');
+                        int arraylenght = s.Length;
+
+                        string tamad = (arraylenght <= 3) ? tamad = s[1] + " " + s[0] + " " + s[2]
+                            : Session["Myname"].ToString();
+
+
+
+                    }
+                    <h1 style="text-align:center" class="abc" id="nk">@tamad</h1>
+                </div>
+
+                @*<span class="colorlib-counter js-counter" data-from="0" data-to="309" data-speed="5000" data-refresh-interval="50"></span>
+                    <span class="colorlib-counter-label">Cups of coffee</span>*@
+                @*</div>*@
+                @*<div class="col-md-3 text-center animate-box">
+                        <span class="colorlib-counter js-counter" data-from="0" data-to="356" data-speed="5000" data-refresh-interval="50"></span>
+                        <span class="colorlib-counter-label">Projects</span>
+                    </div>*@
+                @*<div class="col-md-3 text-center animate-box">
+                        <span class="colorlib-counter js-counter" data-from="0" data-to="30" data-speed="5000" data-refresh-interval="50"></span>
+                        <span class="colorlib-counter-label">Clients</span>
+                    </div>*@
+                @*<div class="col-md-3 text-center animate-box">
+                        <span class="colorlib-counter js-counter" data-from="0" data-to="10" data-speed="5000" data-refresh-interval="50"></span>
+                        <span class="colorlib-counter-label">Partners</span>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+    @Html.Partial("~/Views/Partial/SectionFourPartial.cshtml", Model.SectionFourYetenekBilgileri)
+    @Html.Partial("~/Views/Partial/SectionFivePartial.cshtml", Model.SectionFiveEgitimBilgileri)
+    @Html.Partial("~/Views/Partial/SectionSixPartial.cshtml", Model.SectionSixTecrubeBilgileri)
+    @Html.Partial("~/Views/Partial/SectionSevenPartial.cshtml", Model.News)
+    @Html.Partial("~/Views/Partial/SectionEightPartial.cshtml", Model.SectionEightIletisimveKisisel)
+
+</div><!-- end:colorlib-main -->
+<script src="~/Scripts/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#nk").css("color", "white");
+        $('.abc').textillate({
+            in: { effect: 'rollIn', delay: 100 },
+            out: { effect: 'rollOut', delay:10 },
+            loop:true
+        });
+        $('.abcd').textillate({
+            in: { effect: 'rollIn', delay: 100, shuffle:true }
+        })
+    });
+
+</script>
+<script>
+        var param2 = '@TempData["Message"]';
+        $(document).ready(function () {
+            if (param2 != "") {
+                console.log(param2)
+                $.alert({
+                    animation: 'rotate',
+                    closeAnimation: 'rotate',
+                    icon: 'fa fa-spinner fa-spin',
+                    title: 'Uyarı',
+                    content: param2,
+                    theme: 'dark',
+                    type: 'black',
+                    boxWidth: '25%',
+                })
+            }
+        });
+</script>
+
