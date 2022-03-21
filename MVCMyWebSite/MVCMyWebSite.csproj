@@ -195,6 +195,7 @@
     <Compile Include="Models\BlogYazilari.cs">
       <DependentUpon>MysiteModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\CurrencyApiModel\CryptoCurrency.cs" />
     <Compile Include="Models\DTO\NewsApiModel\Article.cs" />
     <Compile Include="Models\DTO\Files.cs" />
     <Compile Include="Models\DTO\Kurlar.cs" />

@@ -13,6 +13,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Xml;
 using MVCMyWebSite.Models.DTO;
+using MVCMyWebSite.Models.DTO.CurrencyApiModel;
 
 namespace MVCMyWebSite.Controllers
 {
@@ -233,10 +234,64 @@ namespace MVCMyWebSite.Controllers
             });
         }
 
+        [HttpPost]
+        public JsonResult currency()
+        {
+            string BTC_Currency = "",
+                   ETH_Currency = "";
+
+            //var apiUrl = "https://api.binance.com/api/v3/ticker/price?symbols=%5B%22BTCUSDT%22,%22ETHUSDT%22%5D]";
+            //var apiUrl = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT";
+            var apiUrl = "https://api.binance.com/api/v3/ticker/price?symbols=[\"BTCUSDT\",\"ETHUSDT\"]";
+
+            string json;
+            List<CryptoCurrency> jsonList = new List<CryptoCurrency>();
+
+
+            int success = 0;
+            try
+            {
+                Uri url = new Uri(apiUrl);
+                WebClient client = new WebClient();
+                client.Encoding = System.Text.Encoding.UTF8;
+                json = client.DownloadString(url);
+                //END
+                //JSON Parse START
+                JavaScriptSerializer ser = new JavaScriptSerializer();
+                jsonList = ser.Deserialize<List<CryptoCurrency>>(json);
+
+                foreach (var item in jsonList)
+                {
+                    if (item.symbol == "BTCUSDT")
+                    {
+                        BTC_Currency = item.price;
+                    }
+                    else if (item.symbol == "ETHUSDT")
+                    {
+                        ETH_Currency = item.price;
+                    }
+                }
+
+
+                if (jsonList != null)
+                    success = 1;
+            }
+            catch (Exception ex)
+            {
+            }
+
+            return Json(new
+            {
+                succeed = success,
+                btcusdt = BTC_Currency,
+                ethusdt = ETH_Currency
+            });
+        }
+
 
         //https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT
         //https://api.binance.com/api/v3/ticker/price?symbols=["BTCUSDT","ETHUSDT"]
-        
+
         //https://json2csharp.com/ Bu siteyi kullanarak Json formatında bir veriyi Model e dönüştürebilirsin.
         //JSON deserialize yaptığı işlem Json formatında gelen bir veriyi tamamen C# taki modele uygun gelerek nesneye aktarır.
         //Json deserialize boş dönmemesi için modelin doğru oluşturulması sağlanmalıdır.

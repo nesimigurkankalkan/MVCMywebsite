@@ -90,30 +90,53 @@
                             <li><a href="#" data-nav-section="blog">HABERLER</a></li>
                             <li><a href="#" data-nav-section="contact">İLETİŞİM</a></li>
                             @*<li><a href="#">USD Alış: @ViewBag.usdalis USD Satış: @ViewBag.usdsatis</a></li>
-                    <li><a href="#">EURO Alış: @ViewBag.euroalis EURO Satış: @ViewBag.eurosatis</a></li>*@
+        <li><a href="#">EURO Alış: @ViewBag.euroalis EURO Satış: @ViewBag.eurosatis</a></li>*@
 
-                            @*<li id="remover">
-                        <hr style="margin-top:0px; border-top:2px solid rgba(0, 0, 0, 0.075);" />
-                        <center>
-                            <table cellpadding="0" cellspacing="0" id="kurlar" style="box-shadow:0px 0px 12px 7px rgba(0, 0, 0, 0.3);">
-                                <tr>
-                                    <td></td>
-                                    <td><b>Alış</b></td>
-                                    <td><b>Satış</b></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Dolar</b></td>
-                                    <td><span id="d_alis"></span></td>
-                                    <td><span id="d_satis"></span></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Euro</b></td>
-                                    <td><span id="e_alis"></span></td>
-                                    <td><span id="e_satis"></span></td>
-                                </tr>
-                            </table>
-                        </center>
-                    </li>*@
+                            <li id="remover">
+                                <hr style="margin-top:0px; border-top:2px solid rgba(0, 0, 0, 0.075);" />
+                                <center>
+                                    <br />
+                                    <h4>Döviz Kurları</h4>
+                                    <table cellpadding="0" cellspacing="0" id="kurlar" style="box-shadow:0px 0px 12px 7px rgba(0, 0, 0, 0.3);">
+                                        <tr>
+                                            <td>MERKEZ BANKASI</td>
+                                            <td><b>Alış</b></td>
+                                            <td><b>Satış</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Dolar</b></td>
+                                            <td><span id="d_alis"></span></td>
+                                            <td><span id="d_satis"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Euro</b></td>
+                                            <td><span id="e_alis"></span></td>
+                                            <td><span id="e_satis"></span></td>
+                                        </tr>
+                                    </table>
+                                </center>
+                            </li>
+                            <li id="remover2">
+                                <br />
+                                <hr style="margin-top:0px; border-top:2px solid rgba(0, 0, 0, 0.075);" />
+                                <center>
+                                    <h4>Kripto Kurları</h4>
+                                    <table cellpadding="0" cellspacing="0" id="kurlar" style="box-shadow:0px 0px 12px 7px rgba(0, 0, 0, 0.3);">
+                                        <tr>
+                                            <td>BİNANCE BORSASI</td>
+                                            <td><b>USDT</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>BTCUSDT</b></td>
+                                            <td><span id="btcusdt"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>ETHUSDT</b></td>
+                                            <td><span id="ethusdt"></span></td>
+                                        </tr>
+                                    </table>
+                                </center>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -163,9 +186,6 @@
     <script src="~/Scripts/jquery.textillate.js"></script>
     <script src="~/Scripts/jquery-confirm.js"></script>
     <script>
-  //$(function(){
-  //    kurkap();
-  //})
         var timeOutId = 0;
         var ajaxFn = function () {
             $.ajax({
@@ -189,6 +209,27 @@
                 },
                 error: function () {
                     $("#remover").remove();
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: '/Home/currency/',
+                dataType: "JSON",
+                contentType: "application/json;charset=utf-8",
+                success: function (result) {
+                    if (result.succeed) {
+                        //console.log("İşlem basarılı");
+                        //console.log(result.usal);
+                        $("#btcusdt").html(result.btcusdt);
+                        $("#ethusdt").html(result.ethusdt);
+                    }
+                    else {
+                        $("#remover2").remove();
+                    }
+                },
+                error: function () {
+                    $("#remover2").remove();
                 }
             });
         }
