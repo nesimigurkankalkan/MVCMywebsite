@@ -13,6 +13,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Xml;
 using MVCMyWebSite.Models.DTO;
+
 namespace MVCMyWebSite.Controllers
 {
     [AllowAnonymous]
@@ -60,7 +61,9 @@ namespace MVCMyWebSite.Controllers
             }
             model.SectionEightIletisimveKisisel = iletisimKisiselViewModel;
 
-            model.News = GetApiData();
+            model.Root = GetApiData();
+            //ViewBag.Data = GetApiData();
+            //model.News = GetApiData();  //Hurriyetten çekerken bunu kullanıyordum
 
             //Bu kod sadece Sessionı goturuyor ama istenildiği takdirde modelide gonderip çalıştırabılıyorsun Tek tablo olması halinde
             var anasayfaModel = _db.anasayfaSlider.FirstOrDefault();
@@ -93,11 +96,6 @@ namespace MVCMyWebSite.Controllers
             //ViewData["eitimilerim"] = _db.egitim.ToList();
             //ViewData["tcrubelerim"] = _db.tecrube.ToList();
             //ViewData["ksisel"] = iletisimKisiselViewModel;
-
-            
-
-
-            ViewBag.Data = GetApiData();
 
 
             return View(model);
@@ -234,11 +232,18 @@ namespace MVCMyWebSite.Controllers
                 eusat = EURO_Satis
             });
         }
-        private List<News> GetApiData()
+
+
+        //https://json2csharp.com/ Bu siteyi kullanarak Json formatında bir veriyi Model e dönüştürebilirsin.
+        //JSON deserialize yaptığı işlem Json formatında gelen bir veriyi tamamen C# taki modele uygun gelerek nesneye aktarır.
+        //Json deserialize boş dönmemesi için modelin doğru oluşturulması sağlanmalıdır.
+        private Root GetApiData()    
         {
-            var apiUrl = "https://api.hurriyet.com.tr/v1/articles?apikey=4e31e7f09adc48e1acdf7962f3d88ef0";
+            //var apiUrl = "https://api.hurriyet.com.tr/v1/articles?apikey=4e31e7f09adc48e1acdf7962f3d88ef0";
+            //ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+            var apiUrl = "http://newsapi.org/v2/top-headlines?country=tr&category=technology&apiKey=478ef8d3e7f64300bf53c245b001e00a";
             string json;
-            List<News> jsonList = new List<News>();
+            Root jsonList = new Root();
             try
             {
                 //ConnectApi
@@ -249,16 +254,42 @@ namespace MVCMyWebSite.Controllers
                 //END
                 //JSON Parse START
                 JavaScriptSerializer ser = new JavaScriptSerializer();
-                jsonList = ser.Deserialize<List<News>>(json);
+                jsonList = ser.Deserialize<Root>(json);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
 
-            
+
+
             return jsonList;
         }
 
+        //private List<News> GetApiData()    //Hurriyetten çekerken bunu kullanıyordum.
+        //{
+        //    var apiUrl = "https://api.hurriyet.com.tr/v1/articles?apikey=4e31e7f09adc48e1acdf7962f3d88ef0";
+        //    string json;
+        //    List<News> jsonList = new List<News>();
+        //    try
+        //    {
+        //        //ConnectApi
+        //        Uri url = new Uri(apiUrl);
+        //        WebClient client = new WebClient();
+        //        client.Encoding = System.Text.Encoding.UTF8;
+        //        json = client.DownloadString(url);
+        //        //END
+        //        //JSON Parse START
+        //        JavaScriptSerializer ser = new JavaScriptSerializer();
+        //        jsonList = ser.Deserialize<List<News>>(json);
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //    }
+
+
+        //    return jsonList;
+        //}
     }
 }

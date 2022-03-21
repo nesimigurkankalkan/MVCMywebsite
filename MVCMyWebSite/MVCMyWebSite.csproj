@@ -195,9 +195,12 @@
     <Compile Include="Models\BlogYazilari.cs">
       <DependentUpon>MysiteModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\NewsApiModel\Article.cs" />
     <Compile Include="Models\DTO\Files.cs" />
     <Compile Include="Models\DTO\Kurlar.cs" />
     <Compile Include="Models\DTO\News.cs" />
+    <Compile Include="Models\DTO\NewsApiModel\Root.cs" />
+    <Compile Include="Models\DTO\NewsApiModel\Source.cs" />
     <Compile Include="Models\egitim.cs">
       <DependentUpon>MysiteModel.tt</DependentUpon>
     </Compile>
@@ -2071,6 +2074,8 @@
     <Content Include="Scripts\DataTables\responsive.semanticui.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
     <Content Include="Scripts\google_map.js" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />

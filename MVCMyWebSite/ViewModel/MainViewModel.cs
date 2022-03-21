@@ -18,5 +18,6 @@ namespace MVCMyWebSite.ViewModel
         public List<tecrube> SectionSixTecrubeBilgileri { get; set; }
         public IletisimKisiselViewModel SectionEightIletisimveKisisel { get; set; }
         public List<News> News { get; set; }
+        public Root Root { get; set; }
     }
 }

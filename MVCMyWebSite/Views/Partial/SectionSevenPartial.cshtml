@@ -1,5 +1,5 @@
 ﻿@using MVCMyWebSite.Models.DTO;
-@model List<News>
+@model Root
 <section class="colorlib-blog" data-section="blog">
     <div class="colorlib-narrow-content">
         <div class="row">
@@ -9,35 +9,32 @@
             </div>
         </div>
         <div class="row">
-            @{ foreach (var item in Model.Take(3))
+            @{ foreach (var item in Model.articles.Take(3))
                 {
-                    //int sayac = 0;
 
 
             <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
                 <div class="blog-entry">
-                    @foreach (var file in item.Files.Take(1))
-                    {
-                        //if (sayac == 0)
-                        //{
-                        if (file.FileUrl != null) { 
-                            <a href="/" class="blog-img"><img src="@file.FileUrl" class="img-responsive" alt="GÜRKAN NESİMİ KALKAN"></a>
+                    @*@foreach (var file in item.articles.Take(3))
+                    {*@
+                        @if (item.urlToImage != null) { 
+                            <a href="@item.url" class="blog-img"><img src="@item.urlToImage" class="img-responsive" alt="GÜRKAN NESİMİ KALKAN"></a>
                         }
                         else
                         {
-                            <a href="/" class="blog-img"><img src="~/Content/images/no-image.png" class="img-responsive" alt="GÜRKAN NESİMİ KALKAN"/></a>
+                            <a href="@item.url" class="blog-img"><img src="~/Content/images/no-image.png" class="img-responsive" alt="GÜRKAN NESİMİ KALKAN"/></a>
                         }
-                       @*}
-                        sayac += 1;*@
-                    }
-
-                    
-                    
-                    <div class="desc">
+                      
+                        <div class="desc">
                         @*<span><small>April 14, 2018 </small> | <small> Web Design </small> | <small> <i class="icon-bubble3"></i> 4</small></span>*@
                         <h3><a href="blog.html">@item.title</a></h3>
+                        <p>@item.publishedAt.ToShortDateString()</p>
                         <p>@item.description</p>
                     </div>
+                    @*}*@
+
+                        
+                    
                 </div>
             </div>
                 }

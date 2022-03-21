@@ -15,5 +15,6 @@ namespace MVCMyWebSite.Models.DTO
         public string title { get; set; }
         public string description { get; set; }
         public List<Files> Files { get; set; }
+
     }
 }
