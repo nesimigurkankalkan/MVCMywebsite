@@ -234,6 +234,9 @@ namespace MVCMyWebSite.Controllers
         }
 
 
+        //https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT
+        //https://api.binance.com/api/v3/ticker/price?symbols=["BTCUSDT","ETHUSDT"]
+        
         //https://json2csharp.com/ Bu siteyi kullanarak Json formatında bir veriyi Model e dönüştürebilirsin.
         //JSON deserialize yaptığı işlem Json formatında gelen bir veriyi tamamen C# taki modele uygun gelerek nesneye aktarır.
         //Json deserialize boş dönmemesi için modelin doğru oluşturulması sağlanmalıdır.
