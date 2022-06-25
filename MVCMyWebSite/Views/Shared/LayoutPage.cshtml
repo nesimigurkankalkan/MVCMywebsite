@@ -96,10 +96,11 @@
                                 <hr style="margin-top:0px; border-top:2px solid rgba(0, 0, 0, 0.075);" />
                                 <center>
                                     <br />
-                                    <h4>Döviz Kurları</h4>
+                                    <h4><b>Döviz Kurları</b></h4>
+                                    <h5>Merkez Bankası</h5>
                                     <table cellpadding="0" cellspacing="0" id="kurlar" style="box-shadow:0px 0px 12px 7px rgba(0, 0, 0, 0.3);">
                                         <tr>
-                                            <td>MERKEZ BANKASI</td>
+                                            <td><b>KUR</b></td>
                                             <td><b>Alış</b></td>
                                             <td><b>Satış</b></td>
                                         </tr>
@@ -115,23 +116,22 @@
                                         </tr>
                                     </table>
                                 </center>
-                            </li>
-                            <li id="remover2">
                                 <br />
                                 <hr style="margin-top:0px; border-top:2px solid rgba(0, 0, 0, 0.075);" />
                                 <center>
-                                    <h4>Kripto Kurları</h4>
+                                    <h4><b>Kripto Kurları</b></h4>
+                                    <h5>BİNANCE</h5>
                                     <table cellpadding="0" cellspacing="0" id="kurlar" style="box-shadow:0px 0px 12px 7px rgba(0, 0, 0, 0.3);">
                                         <tr>
-                                            <td>BİNANCE BORSASI</td>
+                                            <td><b>KUR</b></td>
                                             <td><b>USDT</b></td>
                                         </tr>
                                         <tr>
-                                            <td><b>BTCUSDT</b></td>
+                                            <td><b> BTC/USDT </b></td>
                                             <td><span id="btcusdt"></span></td>
                                         </tr>
                                         <tr>
-                                            <td><b>ETHUSDT</b></td>
+                                            <td><b> ETH/USDT </b></td>
                                             <td><span id="ethusdt"></span></td>
                                         </tr>
                                     </table>
@@ -198,10 +198,18 @@
                     if (result.succeed) {
                         //console.log("İşlem basarılı");
                         //console.log(result.usal);
-                        $("#d_alis").html(result.usal);
-                        $("#d_satis").html(result.ussat);
-                        $("#e_alis").html(result.eual);
-                        $("#e_satis").html(result.eusat);
+                        console.log(result.usal)
+                        let d_alis = parseFloat(result.usal.replace(",", "."));
+                        let d_satis = parseFloat(result.ussat.replace(",", "."));
+                        let e_alis = parseFloat(result.eual.replace(",", "."));
+                        let e_satis = parseFloat(result.eusat.replace(",", "."));
+
+
+
+                        $("#d_alis").html(d_alis.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+                        $("#d_satis").html(d_satis.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+                        $("#e_alis").html(e_alis.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+                        $("#e_satis").html(e_satis.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
                     }
                     else {
                         $("#remover").remove();
@@ -220,16 +228,20 @@
                 success: function (result) {
                     if (result.succeed) {
                         //console.log("İşlem basarılı");
-                        //console.log(result.usal);
-                        $("#btcusdt").html(result.btcusdt);
-                        $("#ethusdt").html(result.ethusdt);
+                        let btcusdt = parseFloat(result.btcusdt.replace(",", "."));
+                        let ethusdt = parseFloat(result.ethusdt.replace(",", "."));
+                        //console.log(typeof x);
+                        //console.log(x.toFixed(2));
+                        $("#btcusdt").html(btcusdt.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+                        $("#ethusdt").html(ethusdt.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+                        
                     }
                     else {
-                        $("#remover2").remove();
+                        //$("#remover2").remove();
                     }
                 },
                 error: function () {
-                    $("#remover2").remove();
+                    //$("#remover2").remove();
                 }
             });
         }

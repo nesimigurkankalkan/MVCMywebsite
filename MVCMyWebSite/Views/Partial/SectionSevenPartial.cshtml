@@ -9,14 +9,13 @@
             </div>
         </div>
         <div class="row">
-            @{ foreach (var item in Model.articles.Take(3))
+            @if (Model.articles != null)
+            { foreach (var item in Model.articles.Take(3))
                 {
 
 
             <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
                 <div class="blog-entry">
-                    @*@foreach (var file in item.articles.Take(3))
-                    {*@
                         @if (item.urlToImage != null) { 
                             <a href="@item.url" class="blog-img"><img src="@item.urlToImage" class="img-responsive" alt="GÜRKAN NESİMİ KALKAN"></a>
                         }
@@ -31,10 +30,6 @@
                         <p>@item.publishedAt.ToShortDateString()</p>
                         <p>@item.description</p>
                     </div>
-                    @*}*@
-
-                        
-                    
                 </div>
             </div>
                 }
